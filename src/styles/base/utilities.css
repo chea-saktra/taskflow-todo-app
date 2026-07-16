@@ -1,0 +1,238 @@
+/* Display Utilities */
+
+.block {
+  display: block;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+.inline {
+  display: inline;
+}
+
+.flex {
+  display: flex;
+}
+
+.grid {
+  display: grid;
+}
+
+.none {
+  display: none;
+}
+
+/* Flexbox Utilities */
+
+.flex-row {
+  flex-direction: row;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.items-start {
+  align-items: flex-start;
+}
+
+.items-end {
+  align-items: flex-end;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.justify-end {
+  justify-content: flex-end;
+}
+
+.flex-1 {
+  flex: 1 1 0%;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Flex/Grid Gap Tokens */
+
+.gap-xs {
+  gap: var(--pr-space-xs);
+}
+
+.gap-sm {
+  gap: var(--pr-space-sm);
+}
+
+.gap-md {
+  gap: var(--pr-space-md);
+}
+
+.gap-lg {
+  gap: var(--pr-space-lg);
+}
+
+/* Margin Utilities  */
+
+.m-0 {
+  margin: 0;
+}
+
+.mt-0 {
+  margin-top: 0;
+}
+
+.mb-0 {
+  margin-bottom: 0;
+}
+
+.mt-xs {
+  margin-top: var(--pr-space-xs);
+}
+
+.mb-xs {
+  margin-bottom: var(--pr-space-xs);
+}
+
+.mt-sm {
+  margin-top: var(--pr-space-sm);
+}
+
+.mb-sm {
+  margin-bottom: var(--pr-space-sm);
+}
+
+.mt-md {
+  margin-top: var(--pr-space-md);
+}
+
+.mb-md {
+  margin-bottom: var(--pr-space-md);
+}
+
+.mt-lg {
+  margin-top: var(--pr-space-lg);
+}
+
+.mb-lg {
+  margin-bottom: var(--pr-space-lg);
+}
+
+.mx-auto {
+  margin-inline: auto;
+}
+
+/* Padding Utilities */
+
+.p-0 {
+  padding: 0;
+}
+
+.p-xs {
+  padding: var(--pr-space-xs);
+}
+
+.p-sm {
+  padding: var(--pr-space-sm);
+}
+
+.p-md {
+  padding: var(--pr-space-md);
+}
+
+.p-lg {
+  padding: var(--pr-space-lg);
+}
+
+.px-sm {
+  padding-inline: var(--pr-space-sm);
+}
+
+.py-sm {
+  padding-block: var(--pr-space-sm);
+}
+
+.px-md {
+  padding-inline: var(--pr-space-md);
+}
+
+.py-md {
+  padding-block: var(--pr-space-md);
+}
+
+/* Border Radius Utilities */
+
+.rounded-sm {
+  border-radius: var(--pr-radius-sm);
+}
+
+.rounded-md {
+  border-radius: var(--pr-radius-md);
+}
+
+.rounded-lg {
+  border-radius: var(--pr-radius-lg);
+}
+
+.rounded-full {
+  border-radius: var(--pr-radius-full);
+}
+
+/* Width / Height */
+
+.w-full {
+  width: 100%;
+}
+
+.h-full {
+  height: 100%;
+}
+
+.min-h-screen {
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+.w-screen {
+  width: 100vw;
+}
+
+/* Miscellaneous / Visual Helper */
+
+.shadow-sm {
+  box-shadow: var(--sys-shadow-sm);
+}
+
+.shadow-md {
+  box-shadow: var(--sys-shadow-md);
+}
+
+.shadow-lg {
+  box-shadow: var(--sys-shadow-lg);
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.user-select-none {
+  user-select: none;
+}
