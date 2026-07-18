@@ -1,0 +1,39 @@
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--pr-space-xs);
+  padding: var(--pr-space-xs) var(--pr-space-sm);
+  border-radius: var(--pr-radius-full);
+  background-color: var(--pr-color-neutral-100);
+  color: var(--sys-text);
+  font-family: var(--pr-font-family-base);
+  font-size: var(--pr-fs-caption);
+  font-weight: var(--pr-font-weight-medium);
+  border: 1px solid var(--sys-border);
+  cursor: pointer;
+  transition: all var(--pr-anim-fast);
+  white-space: nowrap;
+}
+
+.chip:hover {
+  background-color: var(--pr-color-neutral-200);
+}
+
+.chip--selected {
+  background-color: var(--sys-color-primary);
+  color: #ffffff;
+  border-color: var(--sys-color-primary);
+}
+
+.chip--selected:hover {
+  background-color: var(--sys-color-primary-hover);
+}
+
+.chip__close-btn {
+  padding: 0;
+  color: inherit;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  border-radius: var(--pr-radius-full);
+}
