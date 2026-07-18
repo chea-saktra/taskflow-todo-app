@@ -7,7 +7,23 @@ export function selectAll(selector, parent = document) {
 }
 
 export function createElement(tagName, options = {}) {
-  const element = document.createElement(tagName);
+  const svgTags = [
+    "svg",
+    "circle",
+    "path",
+    "rect",
+    "line",
+    "g",
+    "polygon",
+    "polyline",
+  ];
+
+  let element;
+  if (svgTags.includes(tagName.toLowerCase())) {
+    element = document.createElementNS("http://www.w3.org/2000/svg", tagName);
+  } else {
+    element = document.createElement(tagName);
+  }
 
   if (options.className) {
     element.className = options.className;
