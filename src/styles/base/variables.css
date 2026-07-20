@@ -62,7 +62,7 @@
   --sys-border: var(--pr-color-neutral-200);
 
   --sys-text: var(--pr-color-neutral-900);
-  --sys-text-nuted: var(--pr-color-neutral-500);
+  --sys-text-muted: var(--pr-color-neutral-500);
   --sys-text-light: var(--pr-color-neutral-400);
 
   --sys-color-primary: var(--pr-color-primary-500);
@@ -77,7 +77,7 @@
   --sys-shadow-lg:
     0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.03);
 
-  --layout-sidebar-widht: clamp(240px, 15vw, 280px);
+  --layout-sidebar-width: clamp(240px, 15vw, 280px);
   --layout-header-height: 70px;
 
   --comp-task-card-bg: var(--sys-bg-card);

@@ -13,9 +13,10 @@ html {
 }
 
 body {
+  min-height: 100vh;
   min-height: 100dvh;
   background-color: var(--sys-bg);
-  color: var(--sysy-text);
+  color: var(--sys-text);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
@@ -29,10 +30,6 @@ canvas {
   display: block;
   max-width: 100;
   height: auto;
-}
-
-svg {
-  fill: currentColor;
 }
 
 input,

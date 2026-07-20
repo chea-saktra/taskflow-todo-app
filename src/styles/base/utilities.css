@@ -236,3 +236,11 @@
 .user-select-none {
   user-select: none;
 }
+
+.absolute-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  line-height: 1;
+}
