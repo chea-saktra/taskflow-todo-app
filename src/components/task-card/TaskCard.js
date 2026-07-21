@@ -8,49 +8,76 @@ import { Badge } from "../badge/Badge";
 import "./task-card.css";
 
 export const TaskCard = (props = {}) => {
-  const { task, onToggle, onDelete } = props;
+  const { task = {}, onToggle, onAction } = props;
+
   const overdue = isOverdue(task.dueDate) && !task.completed;
+
   const checkbox = createElement("input", {
     className: "task-card__checkbox pointer",
     attributes: {
       type: "checkbox",
-      ...TaskCard(task.completed ? { checked: "true" } : {}),
+      ...(task.completed ? { checked: true } : {}),
     },
-    events: { change: () => onToggle(task.id) },
+    events: { change: (e) => onToggle && onToggle(task.id, e.target.checked) },
   });
 
-  const title = createElement("span", {
-    className: cnBEM("task-card__title", "completed", task.completed),
+  const title = createElement("h4", {
+    className: `text-truncate ${cnBEM(
+      "task-card__title",
+      "completed",
+      task.completed,
+    )}`,
     textContent: task.title,
   });
 
-  const date = createElement("span", {
-    className: cnBEM("task-card__date", "overdue", overdue),
-    children: [
-      createElement("i", { attributes: { "data-lucide": "calender" } }),
-      document.createTextNode(formatRelativeDate(task.dueDate)),
-    ],
+  const metaChildren = [];
+
+  if (task.category) {
+    metaChildren.push(Badge({ type: task.category, text: task.category }));
+  }
+
+  if (task.priority) {
+    metaChildren.push(Badge({ type: task.priority, text: task.priority }));
+  }
+  if (task.dueDate) {
+    metaChildren.push(
+      createElement("span", {
+        className: cnBEM("task-card__date", "overdue", overdue),
+        children: [
+          createElement("i", { attributes: { "data-lucide": "calendar" } }),
+          document.createTextNode(formatRelativeDate(task.dueDate)),
+        ],
+      }),
+    );
+  }
+
+  const metaRow = createElement("div", {
+    className: "task-card__meta",
+    children: metaChildren,
   });
 
-  const info = createElement("div", {
-    className: "task-card__info",
-    children: [title, date],
+  const content = createElement("div", {
+    className: "task-card__content",
+    children: [title, metaRow],
   });
 
-  const btnDelete = createElement("button", {
-    className: "task-card__delete-btn",
-    events: { click: () => onDelete(task.id) },
-    children: createElement("i", { attributes: { "data-lucide": "trash-2" } }),
+  const BtnAction = createElement("button", {
+    className: "task-card__action-btn",
+    attributes: { "aria-label": "More options" },
+    events: {
+      click: (e) => {
+        e.stopPropagation();
+        if (onAction) onAction(task, e);
+      },
+    },
+    children: createElement("i", {
+      attributes: { "data-lucide": "more-vertical" },
+    }),
   });
 
-  const card = createElement("div", {
+  const card = createElement("article", {
     className: cnBEM("task-card", "completed", task.completed),
-    children: [
-      checkbox,
-      info,
-      Badge({ type: task.priority, text: task.priority }),
-      btnDelete,
-    ],
+    children: [checkbox, content, BtnAction],
   });
 
   return card;
