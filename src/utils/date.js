@@ -7,12 +7,14 @@ function startOfDay(date) {
 
 export function formatDate(date) {
   if (!date) return ``;
+  const d = new Date(date);
+  if (isNaN(d.getTime())) return ``;
 
   return new Intl.DateTimeFormat("en-US", {
     day: "numeric",
     month: "short",
     year: "numeric",
-  }).format(new Date(date));
+  }).format(d);
 }
 
 export function formatRelativeDate(date) {

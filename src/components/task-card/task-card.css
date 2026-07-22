@@ -85,7 +85,7 @@
 .task-card__action-btn {
   color: var(--sys-text-muted);
   padding: var(--pr-space-xs);
-  border-radius: var(--pr-redius-sm);
+  border-radius: var(--pr-radius-sm);
   display: flex;
   align-items: center;
   justify-content: center;

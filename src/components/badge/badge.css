@@ -40,7 +40,7 @@
   color: var(--cat-study-text);
 }
 
-.badge--shopping{
+.badge--shopping {
   background-color: var(--cat-shopping-bg);
   color: var(--cat-shopping-text);
 }

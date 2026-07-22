@@ -4,8 +4,8 @@ export function escapeHTML(string) {
     "<": "&lt;",
     ">": "&gt;",
     '"': "&quot;",
-    "'": "&#x27",
-    "/": "&#x2F",
+    "'": "&#x27;",
+    "/": "&#x2F;",
   };
 
   return String(string).replace(/[&<>"'/]/g, (s) => map[s]);

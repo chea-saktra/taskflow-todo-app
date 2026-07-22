@@ -42,7 +42,7 @@ export const taskState = {
     this._notify();
   },
 
-  daleteTask(taskId) {
+  deleteTask(taskId) {
     tasks = tasks.filter((t) => t.id !== taskId);
     this._notify();
   },
