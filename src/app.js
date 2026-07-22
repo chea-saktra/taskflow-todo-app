@@ -5,6 +5,7 @@ import { Sidebar } from "./layouts/sidebar/Sidebar";
 import { Toolbar } from "./layouts/toolbar/Toolbar";
 import { Router } from "./router/router";
 import { routerState } from "./state/router";
+import { taskState } from "./state/task";
 import { uiState } from "./state/ui";
 import { createElement, select } from "./utils";
 import { DashboardView } from "./views/dashboard/Dashboard";
@@ -65,6 +66,7 @@ export const initApp = () => {
   };
 
   routerState.subscribe(() => render());
+  taskState.subscribe(() => render());
 
   uiState.subscribe((isOpen) => {
     const sidebarEl = select(".app-shell__sidebar");

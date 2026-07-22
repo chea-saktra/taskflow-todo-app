@@ -1,0 +1,97 @@
+.tasks-view {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pr-space-md);
+  width: 100%;
+}
+
+.tasks-view__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--pr-space-sm);
+}
+
+.tasks-view__title {
+  font-size: var(--pr-fs-h1);
+  font-weight: var(--pr-font-weight-bold);
+  color: var(--sys-text);
+}
+
+.tasks-view__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--pr-space-xs);
+}
+
+.tasks-view__addtask-btn {
+  border-radius: var(--pr-radius-md);
+}
+.tasks-view__tabs {
+  display: flex;
+  align-items: center;
+  gap: var(--pr-space-xs);
+  overflow-x: auto;
+  padding-bottom: 4px;
+  scrollbar-width: none;
+}
+
+.tasks-view__tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.tasks-view__tab-btn {
+  background-color: var(--pr-color-neutral-100);
+  color: var(--sys-text-muted);
+  padding: 6px 16px;
+  border-radius: var(--pr-radius-full);
+  font-size: var(--pr-fs-small);
+  font-weight: var(--pr-font-weight-semibold);
+}
+
+.tasks-view__tab-btn:hover {
+  background-color: var(--pr-color-neutral-200);
+  color: var(--sys-text);
+}
+
+.tasks-view__tab-btn--active {
+  background-color: var(--sys-color-primary);
+  color: #ffffff;
+}
+
+.tasks-view__tab-btn--active:hover {
+  background-color: var(--sys-color-primary-hover);
+  color: #ffffff;
+}
+
+.tasks-view__table-header {
+  display: none;
+}
+
+.tasks-view__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pr-space-xs);
+}
+
+@media (min-width: 1024px) {
+  .tasks-view__table-header {
+    display: grid;
+    grid-template-columns: auto repeat(4, 1fr) auto;
+    gap: var(--pr-space-md);
+    padding-inline: 1.25rem;
+    align-items: center;
+    border-bottom: 1px solid var(--sys-border);
+    padding-bottom: 0.75rem;
+  }
+
+  .tasks-view__select-all {
+    width: 18px;
+    height: 18px;
+    border-radius: var(--pr-radius-sm);
+    border: 1px solid var(--sys-border);
+    accent-color: var(--sys-color-primary);
+    flex-shrink: 0;
+  }
+}

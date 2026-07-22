@@ -30,7 +30,7 @@
 
   --pr-font-family-base: "Inter", system-ui, -apple-system, sans-serif;
 
-  --pr-fs-caption: clapm(0.69rem, 0.67rem + 0.08vw, 0.75rem);
+  --pr-fs-caption: clamp(0.69rem, 0.67rem + 0.08vw, 0.75rem);
   --pr-fs-small: clamp(0.75rem, 0.71rem + 0.17vw, 0.88rem);
   --pr-fs-body: clamp(0.88rem, 0.86rem + 0.08vw, 0.94rem);
   --pr-fs-large: clamp(1rem, 0.98rem + 0.08vw, 1.06rem);
@@ -76,6 +76,19 @@
     0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
   --sys-shadow-lg:
     0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.03);
+
+  --cat-work-color: #3b82f6;
+  --cat-study-color: #10b981;
+  --cat-personal-color: #a855f7;
+  --cat-shopping-color: #f97316;
+  --cat-work-bg: #dbeafe;
+  --cat-work-text: #1e4ed8;
+  --cat-study-bg: #dcfce7;
+  --cat-study-text: #15803d;
+  --cat-personal-bg: #f3e8ff;
+  --cat-personal-text: #7e22ce;
+  --cat-shopping-bg: #fef3fc;
+  --cat-shopping-text: #b45309;
 
   --layout-sidebar-width: clamp(240px, 15vw, 280px);
   --layout-header-height: 70px;

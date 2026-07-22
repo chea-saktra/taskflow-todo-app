@@ -6,6 +6,8 @@
   padding: 2px var(--pr-space-sm);
   border-radius: var(--pr-radius-full);
   text-transform: capitalize;
+  background-color: var(--pr-color-neutral-100);
+  color: var(--sys-text-muted);
 }
 
 .badge--high {
@@ -23,7 +25,22 @@
   color: var(--sys-color-primary);
 }
 
-.badge--category {
-  background-color: var(--pr-color-neutral-100);
-  color: var(--sys-text-muted);
+.badge--work {
+  background-color: var(--cat-work-bg);
+  color: var(--cat-work-text);
+}
+
+.badge--personal {
+  background-color: var(--cat-personal-bg);
+  color: var(--cat-personal-text);
+}
+
+.badge--study {
+  background-color: var(--cat-study-bg);
+  color: var(--cat-study-text);
+}
+
+.badge--shopping{
+  background-color: var(--cat-shopping-bg);
+  color: var(--cat-shopping-text);
 }
