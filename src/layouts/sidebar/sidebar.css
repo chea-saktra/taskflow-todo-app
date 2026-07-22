@@ -27,7 +27,7 @@
 .app-sidebar__nav {
   display: flex;
   flex-direction: column;
-  gap:4px;
+  gap: 4px;
 }
 
 .app-sidebar__item {
@@ -52,7 +52,7 @@
   color: inherit;
 }
 
-.app-sidebar__item:hover{
+.app-sidebar__item:hover {
   letter-spacing: 0.05em;
 }
 
@@ -63,7 +63,6 @@
   background-color: var(--pr-color-neutral-100);
   color: var(--sys-color-primary);
 }
-
 
 .app-sidebar__title {
   font-size: var(--pr-fs-caption);
@@ -87,16 +86,16 @@
 }
 
 .app-sidebar__dot--blue {
-  background-color: #3b82f6;
+  background-color: var(--cat-work-color);
 }
 .app-sidebar__dot--green {
-  background-color: #10b981;
+  background-color: var(--cat-study-color);
 }
 .app-sidebar__dot--purple {
-  background-color: #8b5cf6;
+  background-color: var(--cat-personal-color);
 }
 .app-sidebar__dot--orange {
-  background-color: #f97316;
+  background-color: var(--cat-shopping-color);
 }
 
 .app-sidebar__footer {
