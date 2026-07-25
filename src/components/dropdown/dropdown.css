@@ -12,7 +12,7 @@
   border: 1px solid var(--sys-border);
   border-radius: var(--pr-radius-md);
   box-shadow: var(--pr-shadow-lg);
-  min-height: 160px;
+  min-width: 7.5rem;
   z-index: 50;
   display: none;
   flex-direction: column;
@@ -26,6 +26,7 @@
 .dropdown__item {
   display: flex;
   align-items: center;
+
   gap: var(--pr-space-sm);
   width: 100%;
   padding: var(--pr-space-sm) var(--pr-space-md);
@@ -36,12 +37,21 @@
   transition: background-color var(--pr-anim-fast);
 }
 
+.dropdown__item svg {
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
 .dropdown__item:hover {
   background-color: var(--pr-color-neutral-100);
 }
 
 .dropdown__item--danger {
   color: var(--sys-color-danger);
+}
+
+.dropdown__item--danger svg,.dropdown__item--danger i{
+  color: var(--sys-color-danger) !;
 }
 
 .dropdown__item--danger:hover {

@@ -1,26 +1,41 @@
+import { cnBEM } from "../../utils";
 import { createElement } from "../../utils/dom";
 import "./dropdown.css";
 
 export const Dropdown = (props = {}) => {
   let isOpen = false;
-
   const trigger = props.trigger;
 
   const menuItems = (props.items || []).map((item) => {
+    const itemChildren = [];
+    if (item.color) {
+      itemChildren.push(
+        createElement("span", {
+          className: "dropdown__dot",
+          attributes: { style: `background-color: ${item.color};` },
+        }),
+      );
+    }
+
+    if (item.icon) {
+      itemChildren.push(
+        createElement("i", { attributes: { "data-lucide": item.icon } }),
+      );
+    }
+
+    itemChildren.push(createElement("span", { textContent: item.label }));
+
     return createElement("button", {
-      className: `dropdown__item ${item.isDanger ? "dropdown__item--danger" : ""}`,
+      className: cnBEM("dropdown__item", "danger", item.isDanger),
+      attributes: { type: "button" },
       events: {
-        click: () => {
+        click: (e) => {
+          e.preventDefault();
           if (item.onClick) item.onClick();
           toggleDropdown(false);
         },
       },
-      children: [
-        item.icon
-          ? createElement("i", { attributes: { "data-lucide": item.icon } })
-          : null,
-        createElement("span", { textContent: item.label }),
-      ].filter(Boolean),
+      children: itemChildren,
     });
   });
 
@@ -29,14 +44,9 @@ export const Dropdown = (props = {}) => {
     children: menuItems,
   });
 
-  const toggleDropdown = (state) => {
-    isOpen = state !== undefined ? state : !isOpen;
+  const handleCloseAll = () => {
     if (isOpen) {
-      menu.classList.add("dropdown__menu--show");
-      document.addEventListener("click", closeOnOutsideClick);
-    } else {
-      menu.classList.remove("dropdown__menu--show");
-      document.removeEventListener("click", closeOnOutsideClick);
+      toggleDropdown(false);
     }
   };
 
@@ -46,13 +56,30 @@ export const Dropdown = (props = {}) => {
     }
   };
 
+  const toggleDropdown = (state) => {
+    isOpen = state !== undefined ? state : !isOpen;
+    menu.className = cnBEM("dropdown__menu", "show", isOpen);
+    dropdown.classList.toggle("is-open", isOpen);
+
+    if (isOpen) {
+      document.dispatchEvent(new CustomEvent("close-all-dropdowns"));
+      setTimeout(() => {
+        document.addEventListener("click", closeOnOutsideClick, true);
+      }, 0);
+      document.addEventListener("close-all-dropdowns", handleCloseAll);
+    } else {
+      document.removeEventListener("click", closeOnOutsideClick, true);
+      document.removeEventListener("close-all-dropdowns", handleCloseAll);
+    }
+  };
+
   trigger.addEventListener("click", (e) => {
     e.stopPropagation();
     toggleDropdown();
   });
 
   const dropdown = createElement("div", {
-    className: "dropdow",
+    className: "dropdown",
     children: [trigger, menu],
   });
 
