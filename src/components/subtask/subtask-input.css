@@ -1,0 +1,74 @@
+.subtask-input {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--pr-space-xs);
+  width: 100%;
+}
+
+.subtask-input__label {
+  font-weight: var(--pr-font-weight-semibold);
+  color: var(--sys-text);
+  min-width: 4rem;
+}
+
+.subtask-input__field-group {
+  display: flex;
+  gap: var(--pr-space-xs);
+  align-items: center;
+  flex: 1;
+}
+
+.subtask-input__add-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--pr-space-sm);
+  justify-content: center;
+  background-color: var(--pr-color-neutral-100);
+  border: 1px solid var(--sys-border);
+  border-radius: var(--comp-input-radius);
+  color: var(--sys-text);
+  transition:
+    background-color var(--pr-anim-fast),
+    color var(--pr-anim-fast);
+}
+
+.subtask-input__add-btn:hover {
+  background-color: var(--pr-color-primary-50);
+  color: var(--sys-color-primary);
+}
+
+.subtask-input__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pr-space-xs);
+  max-height: 6rem;
+  overflow-y: auto;
+  margin-top: var(--pr-space-xs);
+  width: 100%;
+}
+
+.subtask-input__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--pr-space-xs) var(--pr-space-sm);
+  background-color: var(--sys-bg);
+  border: 1px solid var(--sys-border);
+  border-radius: var(--pr-radius-sm);
+  color: var(--sys-text-muted);
+}
+
+.subtask-input__checkbox {
+  width: 1rem;
+}
+
+.subtask-input__remove-btn {
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
+.subtask-input__remove-btn:hover {
+  color: var(--sys-color-danger);
+}
