@@ -92,8 +92,9 @@
 
   --layout-sidebar-width: clamp(240px, 15vw, 280px);
   --layout-header-height: 70px;
-
-  --comp-task-card-bg: var(--sys-bg-card);
+  --layout-footer-height: 60px;
+  
+   --comp-task-card-bg: var(--sys-bg-card);
   --comp-task-card-padding: var(--pr-space-md);
   --comp-task-card-radius: var(--pr-radius-md);
   --comp-task-card-shadow: var(--sys-shadow-sm);

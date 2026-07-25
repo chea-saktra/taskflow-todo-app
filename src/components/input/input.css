@@ -6,7 +6,6 @@
 }
 
 .form-field__label {
-  font-size: var(--pr-fs-small);
   font-weight: var(--pr-font-weight-semibold);
   color: var(--sys-text);
 }
@@ -25,6 +24,7 @@
 
 .form-field__input:focus {
   border-color: var(--sys-color-primary);
+  outline: none;
 }
 
 textarea.form-field__input {
