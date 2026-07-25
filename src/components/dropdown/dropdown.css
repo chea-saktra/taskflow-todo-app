@@ -50,8 +50,9 @@
   color: var(--sys-color-danger);
 }
 
-.dropdown__item--danger svg,.dropdown__item--danger i{
-  color: var(--sys-color-danger) !;
+.dropdown__item--danger svg,
+.dropdown__item--danger i {
+  color: var(--sys-color-danger) !important;
 }
 
 .dropdown__item--danger:hover {
