@@ -6,23 +6,25 @@
   text-align: center;
   padding: var(--pr-space-xl) var(--pr-space-md);
   color: var(--sys-text-muted);
+  gap: var(--pr-space-md);
 }
 
 .empty-state__icon-wrapper {
-  font-size: 48px;
   color: var(--pr-color-neutral-300);
-  margin-bottom: var(--pr-space-md);
+}
+
+.empty-state__icon-wrapper svg {
+  width: 4rem;
+  height: 4rem;
 }
 
 .empty-state__title {
   font-size: var(--pr-fs-h3);
   font-weight: var(--pr-font-weight-semibold);
   color: var(--sys-text);
-  margin-bottom: var(--pr-space-md);
 }
 
-.empty-state__descritpion {
+.empty-state__description {
   font-size: var(--pr-fs-body);
   max-width: 280px;
-  margin-bottom: var(--pr-space-lg);
 }
