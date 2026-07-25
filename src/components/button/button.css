@@ -8,10 +8,11 @@
   font-weight: var(--pr-font-weight-semibold);
   padding: var(--pr-space-sm) var(--pr-space-md);
   cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: var(--pr-radius-sm);
   transition:
     background-color var(--pr-anim-fast),
     transform var(--pr-anim-fast);
-  border: 1px solid transparent;
 }
 
 .btn--primary {
