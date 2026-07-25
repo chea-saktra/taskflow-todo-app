@@ -1,3 +1,4 @@
+import { TaskController } from "../../features/tasks/controller";
 import {
   cnBEM,
   createElement,
@@ -5,10 +6,11 @@ import {
   isOverdue,
 } from "../../utils";
 import { Badge } from "../badge/Badge";
+import { Dropdown } from "../dropdown/Dropdown";
 import "./task-card.css";
 
 export const TaskCard = (props = {}) => {
-  const { task = {}, onToggle, onAction } = props;
+  const { task = {}, onToggle, onFavorite, onEdit, onDelete } = props;
 
   const overdue = isOverdue(task.dueDate) && !task.completed;
 
@@ -61,23 +63,39 @@ export const TaskCard = (props = {}) => {
     children: [title, metaRow],
   });
 
-  const BtnAction = createElement("button", {
+  const btnTrigger = createElement("button", {
     className: "task-card__action-btn",
     attributes: { "aria-label": "More options" },
-    events: {
-      click: (e) => {
-        e.stopPropagation();
-        if (onAction) onAction(task, e);
-      },
-    },
     children: createElement("i", {
       attributes: { "data-lucide": "more-vertical" },
     }),
   });
 
+  const actionDropdown = Dropdown({
+    trigger: btnTrigger,
+    items: [
+      {
+        label: task.favorite ? "Unstar" : "Star",
+        icon: "star",
+        onClick: () => onFavorite && onFavorite(task.id),
+      },
+      {
+        label: "Edit",
+        icon: "edit-3",
+        onClick: () => onEdit && onEdit(task),
+      },
+      {
+        label: "Delete",
+        icon: "trash-2",
+        isDanger: true,
+        onClick: () => onDelete && onDelete(task.id),
+      },
+    ],
+  });
+
   const card = createElement("article", {
     className: cnBEM("task-card", "completed", task.completed),
-    children: [checkbox, content, BtnAction],
+    children: [checkbox, content, actionDropdown],
   });
 
   return card;

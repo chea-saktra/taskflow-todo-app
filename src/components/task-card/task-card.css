@@ -20,6 +20,11 @@
   border-color: var(--pr-color-neutral-300);
 }
 
+  .task-card:has(.dropdown.is-open) {
+    z-index: 100;
+    position: relative;
+  }
+
 .task-card--completed {
   background-color: var(--pr-color-neutral-50);
   opacity: 0.7;
@@ -119,6 +124,7 @@
 }
 
 @media (min-width: 1024px) {
+
   .task-card {
     display: grid;
     grid-template-columns: auto 1fr 1fr 1fr 1fr auto;
