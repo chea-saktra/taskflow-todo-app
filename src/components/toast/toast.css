@@ -64,7 +64,7 @@
 }
 
 .toast__message {
-  font-family: var(--pr-sont-family-base);
+  font-family: var(--pr-family-base);
   font-size: var(--pr-fs-small);
   flex: 1;
 }

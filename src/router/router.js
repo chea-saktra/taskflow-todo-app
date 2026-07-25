@@ -10,18 +10,12 @@ const routes = {
 
 export const Router = () => {
   const currentRoute = routerState.getRoute();
+  switch (currentRoute) {
+    case "tasks":
+      return TasksView();
 
-  if (currentRoute === "tasks") {
-    return TasksView({
-      tasks: taskState.getTasks(),
-      categories: taskState.getCategories(),
-      activeCategory: taskState.getActiveCategory(),
-      onCategoryChange: (cat) => taskState.setCategory(cat),
-      onToggleTask: (id, completed) => taskState.toggleTask(id, completed),
-      onTaskAction: (task) => console.log("Action on task:", task),
-      onNewTask: () => alert("Open Add Task Modal"),
-    });
+    case "dashboard":
+    default:
+      return DashboardView();
   }
-
-  return DashboardView();
 };
