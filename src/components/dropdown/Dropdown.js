@@ -5,6 +5,7 @@ import "./dropdown.css";
 export const Dropdown = (props = {}) => {
   let isOpen = false;
   const trigger = props.trigger;
+  const align = props.align || "left";
 
   const menuItems = (props.items || []).map((item) => {
     const itemChildren = [];
@@ -39,8 +40,10 @@ export const Dropdown = (props = {}) => {
     });
   });
 
+  const menuClassName = cnBEM("dropdown__menu", "right", align === "right");
+
   const menu = createElement("div", {
-    className: "dropdown__menu",
+    className: menuClassName,
     children: menuItems,
   });
 
@@ -58,7 +61,11 @@ export const Dropdown = (props = {}) => {
 
   const toggleDropdown = (state) => {
     isOpen = state !== undefined ? state : !isOpen;
-    menu.className = cnBEM("dropdown__menu", "show", isOpen);
+    let currentClass = cnBEM("dropdown__menu", "show", isOpen);
+    if (align === "right") {
+      currentClass += " dropdown__menu--right";
+    }
+    menu.className = currentClass;
     dropdown.classList.toggle("is-open", isOpen);
 
     if (isOpen) {
