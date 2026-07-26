@@ -44,3 +44,18 @@
   background-color: var(--cat-shopping-bg);
   color: var(--cat-shopping-text);
 }
+
+.badge--pending {
+  background-color: var(--pr-color-neutral-100);
+  color: var(--sys-text-muted);
+}
+
+.badge--in-progress {
+  background-color: rgba(59, 130, 246, 0.12);
+  color: #2563eb;
+}
+
+.badge--completed {
+  background-color: rgba(34, 197, 94, 0.12);
+  color: var(--syscolor-success);
+}
