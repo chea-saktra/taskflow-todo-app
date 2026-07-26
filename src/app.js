@@ -1,3 +1,5 @@
+import { FilterController } from "./features/filter/controller";
+import { SearchController } from "./features/search/controller";
 import { AppShell } from "./layouts/app-shell/AppShell";
 import { Footer } from "./layouts/footer/Footer";
 import { Header } from "./layouts/header/Header";
@@ -5,11 +7,8 @@ import { Sidebar } from "./layouts/sidebar/Sidebar";
 import { Toolbar } from "./layouts/toolbar/Toolbar";
 import { Router } from "./router/router";
 import { routerState } from "./state/router";
-import { taskState } from "./state/task";
 import { uiState } from "./state/ui";
-import { createElement, select } from "./utils";
-import { DashboardView } from "./views/dashboard/Dashboard";
-import { TasksView } from "./views/tasks/Tasks";
+import { select } from "./utils";
 
 export const initApp = () => {
   const app = document.querySelector("#app");
@@ -37,8 +36,8 @@ export const initApp = () => {
 
     const toolbarComponent = Toolbar({
       searchPlaceholder: "Search task...",
-      onSearch: (value) => console.log("Searching:", value),
-      onFilterChange: (status) => console.log("Filter changed:", status),
+      onSearch: (value) => SearchController.setQuery(value),
+      onFilterChange: (status) => FilterController.setStatus(status),
       onSortChange: (sort) => console.log("Sort changed:", sort),
     });
 
@@ -66,7 +65,6 @@ export const initApp = () => {
   };
 
   routerState.subscribe(() => render());
-  taskState.subscribe(() => render());
 
   uiState.subscribe((isOpen) => {
     const sidebarEl = select(".app-shell__sidebar");
