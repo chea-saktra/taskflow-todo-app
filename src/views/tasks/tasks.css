@@ -6,11 +6,7 @@
 }
 
 .tasks-view__header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: var(--pr-space-sm);
+  display: none;
 }
 
 .tasks-view__title {
@@ -19,15 +15,6 @@
   color: var(--sys-text);
 }
 
-.tasks-view__actions {
-  display: flex;
-  align-items: center;
-  gap: var(--pr-space-xs);
-}
-
-.tasks-view__addtask-btn {
-  border-radius: var(--pr-radius-md);
-}
 .tasks-view__tabs {
   display: flex;
   align-items: center;
@@ -46,7 +33,6 @@
   color: var(--sys-text-muted);
   padding: 6px 16px;
   border-radius: var(--pr-radius-full);
-  font-size: var(--pr-fs-small);
   font-weight: var(--pr-font-weight-semibold);
 }
 
@@ -73,12 +59,27 @@
   display: flex;
   flex-direction: column;
   gap: var(--pr-space-xs);
+  container-type: inline-size;
+  container-name: task-list;
+}
+
+@media (min-width: 768px) {
+  .tasks-view__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--pr-space-sm);
+  }
+
+  .tasks-view > .fab-btn {
+    display: none;
+  }
 }
 
 @media (min-width: 1024px) {
   .tasks-view__table-header {
     display: grid;
-    grid-template-columns: auto repeat(4, 1fr) auto;
+    grid-template-columns: auto repeat(5, 1fr) auto;
     gap: var(--pr-space-md);
     padding-inline: 1.25rem;
     align-items: center;
