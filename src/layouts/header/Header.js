@@ -3,7 +3,7 @@ import { createElement } from "../../utils";
 import { InputField } from "../../components/input/Input";
 
 export const Header = (props = {}) => {
-  const letfSection = createElement("div", {
+  const leftSection = createElement("div", {
     className: "app-header__left",
     children: [
       createElement("button", {
@@ -106,9 +106,9 @@ export const Header = (props = {}) => {
     ],
   });
 
-  const header = createElement("header", {
+  const header = createElement("div", {
     className: "app-header",
-    children: [letfSection, middleSection, actions],
+    children: [leftSection, middleSection, actions],
   });
 
   return header;

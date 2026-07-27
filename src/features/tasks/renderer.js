@@ -37,7 +37,7 @@ export const renderTaskList = (container, tasks = [], options = {}) => {
       },
 
       onDelete: (taskId) => {
-        if (confirm("Are you")) {
+        if (confirm("Are you sure you want to delete this task?")) {
           TaskController.removeTask(taskId);
         }
       },
