@@ -1,0 +1,109 @@
+.filter-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(15, 23, 42, 0.4);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity var(--pr-anim-fast),
+    visibility var(--pr-anim-fast);
+}
+
+.filter-overlay.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.filter-modal {
+  background-color: var(--sys-bg-surface);
+  box-shadow: var(--sys-shadow-lg);
+  width: 100%;
+  padding: var(--pr-radius-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--pr-space-lg);
+  transform: translateY(100%);
+}
+.filter-overlay.is-open .filter-modal {
+  transform: translateY(0);
+}
+
+.filter-modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.filter-modal__title {
+  font-size: var(--pr-fs-h3);
+  font-weight: var(--pr-font-weight-bold);
+  color: var(--sys-text);
+}
+
+.filter-modal__reset-btn {
+  font-size: var(--pr-fs-small);
+  font-weight: var(--pr-font-weight-semibold);
+  color: var(--sys-color-primary);
+  padding: var(--pr-space-xs) var(--pr-space-sm);
+  border-radius: var(--pr-radius-sm);
+  transition: background-color var(--pr-anim-fast);
+}
+
+.filter-modal__reset-btn:hover {
+  background-color: var(--pr-color-primary-50);
+}
+
+.filter-modal__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pr-space-md);
+  max-height: 70dvh;
+}
+
+.filter-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pr-space-xs);
+}
+
+.filter-section__label {
+  font-size: var(--pr-fs-small);
+  font-weight: var(--pr-font-weight-semibold);
+  color: var(--sys-text-muted);
+}
+
+.filter-section__options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--pr-space-sm);
+}
+
+.filter-modal__footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--pr-space-sm);
+  padding-top: var(--pr-space-xs);
+}
+
+@media (min-width: 768px) {
+  .filter-overlay {
+    align-items: stretch;
+    justify-content: flex-end;
+  }
+
+  .filter-modal {
+    max-width: 400px;
+    height: 100%;
+    transform: translateX(100%);
+  }
+
+  .filter-overlay.is-open .filter-modal {
+    transform: translateX(0);
+  }
+}
