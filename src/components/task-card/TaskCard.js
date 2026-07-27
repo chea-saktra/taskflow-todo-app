@@ -53,6 +53,16 @@ export const TaskCard = (props = {}) => {
     );
   }
 
+  const taskState = task.completed ? "Completed" : task.status || "Pending";
+  if (taskState) {
+    metaChildren.push(
+      Badge({
+        type: taskState.toLowerCase().replace(" ", "-"),
+        text: taskState,
+      }),
+    );
+  }
+
   const metaRow = createElement("div", {
     className: "task-card__meta",
     children: metaChildren,
@@ -73,6 +83,7 @@ export const TaskCard = (props = {}) => {
 
   const actionDropdown = Dropdown({
     trigger: btnTrigger,
+    align: "right",
     items: [
       {
         label: task.favorite ? "Unstar" : "Star",
