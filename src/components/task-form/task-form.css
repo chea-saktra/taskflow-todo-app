@@ -7,6 +7,8 @@
 .task-form__header {
   display: flex;
   align-items: center;
+  position: sticky;
+  top: 0;
   justify-content: space-between;
   padding-bottom: var(--pr-space-xs);
   border-bottom: 1px solid var(--sys-border);
@@ -92,7 +94,6 @@ input:checked + .slider::before {
   transform: translateX(20px);
 }
 
-
 .task-form__actions {
   display: flex;
   align-items: center;
@@ -101,8 +102,8 @@ input:checked + .slider::before {
   border-top: 1px solid var(--sys-border);
 }
 
-.task-form__actions button{
-  flex:1;
+.task-form__actions button {
+  flex: 1;
   font-size: var(--pr-fs-body);
   border-radius: var(--pr-radius-sm);
 }
