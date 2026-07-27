@@ -11,7 +11,7 @@ export const Tooltip = (props = {}) => {
 
   const wrapper = createElement("div", {
     className: "tooltip-container",
-    dhildren: [element, tooltipBox],
+    children: [element, tooltipBox],
   });
 
   return wrapper;
