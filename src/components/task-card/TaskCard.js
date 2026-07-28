@@ -4,6 +4,7 @@ import {
   createElement,
   formatRelativeDate,
   isOverdue,
+  openTaskDetailModal,
 } from "../../utils";
 import { Badge } from "../badge/Badge";
 import { Dropdown } from "../dropdown/Dropdown";
@@ -70,6 +71,11 @@ export const TaskCard = (props = {}) => {
 
   const content = createElement("div", {
     className: "task-card__content",
+    events: {
+      click: () => {
+        openTaskDetailModal(task);
+      },
+    },
     children: [title, metaRow],
   });
 

@@ -7,6 +7,7 @@
   display: flex;
   align-items: center;
   gap: var(--pr-space-md);
+  cursor: pointer;
   transition:
     transform var(--pr-anim-fast),
     box-shadow var(--pr-anim-fast),
