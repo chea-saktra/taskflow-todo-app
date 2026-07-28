@@ -1,0 +1,12 @@
+.search-view__tabs {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.search-view__tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.search-view__count {
+  font-size: var(--pr-fs-large);
+}

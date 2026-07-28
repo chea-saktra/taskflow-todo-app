@@ -1,5 +1,6 @@
 import { routerState } from "../state/router";
 import { DashboardView } from "../views/dashboard/Dashboard";
+import { SearchView } from "../views/search/search";
 import { TasksView } from "../views/tasks/Tasks";
 
 const routes = {
@@ -12,6 +13,9 @@ export const Router = () => {
   switch (currentRoute) {
     case "tasks":
       return TasksView();
+
+    case "search":
+      return SearchView();
 
     case "dashboard":
     default:
