@@ -1,10 +1,7 @@
-import { FilterController } from "./features/filter/controller";
-import { SearchController } from "./features/search/controller";
 import { AppShell } from "./layouts/app-shell/AppShell";
 import { Footer } from "./layouts/footer/Footer";
 import { Header } from "./layouts/header/Header";
 import { Sidebar } from "./layouts/sidebar/Sidebar";
-import { Toolbar } from "./layouts/toolbar/Toolbar";
 import { Router } from "./router/router";
 import { routerState } from "./state/router";
 import { uiState } from "./state/ui";
@@ -32,13 +29,6 @@ export const initApp = () => {
         routerState.navigate(routeId);
         uiState.toggleSidebar();
       },
-    });
-
-    const toolbarComponent = Toolbar({
-      searchPlaceholder: "Search task...",
-      onSearch: (value) => SearchController.setQuery(value),
-      onFilterChange: (status) => FilterController.setStatus(status),
-      onSortChange: (sort) => console.log("Sort changed:", sort),
     });
 
     const footerContent = Footer({

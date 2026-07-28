@@ -2,7 +2,7 @@ import { createElement } from "../../utils/dom";
 import "./empty-state.css";
 
 export const EmptyState = (props = {}) => {
-  return createElement("div", {
+  const element = createElement("div", {
     className: "empty-state",
     children: [
       createElement("div", {
@@ -24,4 +24,12 @@ export const EmptyState = (props = {}) => {
       props.actionButton ? props.actionButton : null,
     ].filter(Boolean),
   });
+
+  setTimeout(() => {
+    if (window.lucide) {
+      window.lucide.createIcons();
+    }
+  }, 0);
+
+  return element;
 };

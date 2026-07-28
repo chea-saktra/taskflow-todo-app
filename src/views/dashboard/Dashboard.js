@@ -104,6 +104,10 @@ const createMobileSummaryCard = (stats, formattedDate) => {
   });
 };
 export const DashboardView = () => {
+  const container = createElement("section", {
+    className: "dashboard-view",
+  });
+
   const todayDate = new Intl.DateTimeFormat("en-US", {
     month: "short",
     day: "numeric",
@@ -117,80 +121,95 @@ export const DashboardView = () => {
     return `Good evening 👋`;
   };
 
-  const stats = taskState.getStats();
-  const tasks = taskState.getTasks();
+  const render = () => {
+    container.innerHTML = "";
 
-  const welcomeSection = createElement("div", {
-    className: "dashboard-view__welcome",
-    children: [
-      createElement("h2", {
-        textContent: getGreeting(),
-      }),
-      createElement("p", {
-        textContent: "Let's complete your tasks!",
-      }),
-    ],
-  });
+    const stats = taskState.getStats();
+    const tasks = taskState.getTasks();
 
-  const statsGrid = createElement("div", {
-    className: "dashboard-view__stats-grid",
-    children: [
-      createMobileSummaryCard({ ...stats }, todayDate),
-      createStatCard("Total Tasks", stats.total || "0"),
-      createStatCard("Completed", stats.completed || "0"),
-      createStatCard("Pending", stats.pending || "0"),
-      createStatCard("Progress", "", true, stats.progress || 0),
-    ],
-  });
+    const welcomeSection = createElement("div", {
+      className: "dashboard-view__welcome",
+      children: [
+        createElement("h2", {
+          textContent: getGreeting(),
+        }),
+        createElement("p", {
+          textContent: "Let's complete your tasks!",
+        }),
+      ],
+    });
 
-  const tasksHeader = createElement("div", {
-    className: "dashboard-tasks__header",
-    children: [
-      createElement("h3", {
-        className: "dashboard-tasks__title",
-        textContent: "Today Tasks",
-      }),
-      createElement("button", {
-        className: "dashboard-tasks__see-all",
-        textContent: "See all",
-        attributes: { type: "button" },
-        events: {
-          click: (e) => {
-            e.preventDefault();
-            routerState.navigate("tasks");
+    const statsGrid = createElement("div", {
+      className: "dashboard-view__stats-grid",
+      children: [
+        createMobileSummaryCard({ ...stats }, todayDate),
+        createStatCard("Total Tasks", stats.total || "0"),
+        createStatCard("Completed", stats.completed || "0"),
+        createStatCard("Pending", stats.pending || "0"),
+        createStatCard("Progress", "", true, stats.progress || 0),
+      ],
+    });
+
+    const tasksHeader = createElement("div", {
+      className: "dashboard-tasks__header",
+      children: [
+        createElement("h3", {
+          className: "dashboard-tasks__title",
+          textContent: "Today Tasks",
+        }),
+        createElement("button", {
+          className: "dashboard-tasks__see-all",
+          textContent: "See all",
+          attributes: { type: "button" },
+          events: {
+            click: (e) => {
+              e.preventDefault();
+              routerState.navigate("tasks");
+            },
           },
-        },
-      }),
-    ],
-  });
+        }),
+      ],
+    });
 
-  const tasksContainer = createElement("div", {
-    className: "dashboard-task__list",
-  });
+    const tasksContainer = createElement("div", {
+      className: "dashboard-task__list",
+    });
 
-  renderTaskList(tasksContainer, tasks.slice(0, 5));
+    renderTaskList(tasksContainer, tasks.slice(0, 5));
 
-  const tasksSection = createElement("div", {
-    className: "dashboard-view__tasks-section",
-    children: [tasksHeader, tasksContainer],
-  });
+    const tasksSection = createElement("div", {
+      className: "dashboard-view__tasks-section",
+      children: [tasksHeader, tasksContainer],
+    });
 
-  const analyticsSection = createElement("div", {
-    className: "dashboard-view__analytics-section",
-    children: [AnalyticsCard({ tasks: tasks })],
-  });
+    const analyticsSection = createElement("div", {
+      className: "dashboard-view__analytics-section",
+      children: [AnalyticsCard({ tasks: tasks })],
+    });
 
-  const contentLayout = createElement("div", {
-    className: "dashboard-view__content-layout",
-    children: [tasksSection, analyticsSection],
-  });
+    const contentLayout = createElement("div", {
+      className: "dashboard-view__content-layout",
+      children: [tasksSection, analyticsSection],
+    });
 
-  const btnFab = Fab({
-    onClick: () => openTaskModal(),
-  });
+    const btnFab = Fab({
+      onClick: () => openTaskModal(),
+    });
 
-  return createElement("section", {
-    className: "dashboard-view",
-    children: [welcomeSection, statsGrid, contentLayout, btnFab],
-  });
+    container.append(welcomeSection, statsGrid, contentLayout, btnFab);
+
+    if (window.lucide) {
+      window.lucide.createIcons();
+    }
+  };
+
+  const unsubscribe = taskState.subscribe(render);
+
+  container.onDestroy = () => {
+    unsubscribe();
+  };
+
+  render();
+
+  return container;
 };

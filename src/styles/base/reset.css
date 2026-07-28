@@ -102,24 +102,23 @@ hr {
 }
 
 ::-webkit-scrollbar {
-  width: 6px;           
-  height: 6px;          
+  width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: transparent; 
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
   background-color: #cbd5e1;
-  border-radius: 9999px;   
+  border-radius: 9999px;
   transition: background-color 0.2s ease;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background-color: #94a3b8; 
+  background-color: #94a3b8;
 }
-
 
 * {
   scrollbar-width: thin;

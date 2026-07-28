@@ -13,6 +13,7 @@ import { Fab } from "../../components/fab/Fab";
 import { Toolbar } from "../../layouts/toolbar/Toolbar";
 import { sortState } from "../../state/sort";
 import { SortController } from "../../features/sort/controller";
+import { EmptyState } from "../../components/empty-state/EmptyState";
 
 export const TasksView = () => {
   const btnNewTask = Button({
@@ -94,22 +95,41 @@ export const TasksView = () => {
     currentTasks = SearchController.applySearch(currentTasks);
     currentTasks = FilterController.applyFilter(currentTasks);
     currentTasks = SortController.applySort(currentTasks);
+
     listContent.innerHTML = "";
-    currentTasks.forEach((task) => {
-      const card = TaskCard({
-        task,
-        onToggle: (taskId) => TaskController.toggleTaskStatus(taskId),
-        onFavorite: (taskId) => TaskController.toggleFavoriteTask(taskId),
-        onEdit: (taskData) => openTaskModal(taskData),
-        onDelete: (taskId) => {
-          if (confirm("Are you sure you want to delete this task?")) {
-            TaskController.removeTask(taskId);
-          }
-        },
+
+    if (currentTasks.length === 0) {
+      const query = searchState.getSearchQuery();
+      const emptyView = EmptyState({
+        icon: "clipboard-list",
+        title: "No tasks found",
+        description:
+          "There are no tasks in this category. Click 'New Task' to create one.",
+        actionButton: Button({
+          variant: "primary",
+          icon: "plus",
+          text: "New Task",
+          events: { click: () => openTaskModal() },
+        }),
       });
-      listContent.append(card);
-    });
-    if (window.lucide) window.lucide.createIcons();
+      listContent.append(emptyView);
+    } else {
+      currentTasks.forEach((task) => {
+        const card = TaskCard({
+          task,
+          onToggle: (taskId) => TaskController.toggleTaskStatus(taskId),
+          onFavorite: (taskId) => TaskController.toggleFavoriteTask(taskId),
+          onEdit: (taskData) => openTaskModal(taskData),
+          onDelete: (taskId) => {
+            if (confirm("Are you sure you want to delete this task?")) {
+              TaskController.removeTask(taskId);
+            }
+          },
+        });
+        listContent.append(card);
+      });
+      if (window.lucide) window.lucide.createIcons();
+    }
   };
 
   const unsubTask = taskState.subscribe(updateUI);
