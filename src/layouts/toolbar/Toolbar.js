@@ -5,7 +5,7 @@ import { SelectField } from "../../components/select/SelectField";
 import { Tooltip } from "../../components/tooltip/Tooltip";
 import { SortController } from "../../features/sort/controller";
 import { createElement } from "../../utils";
-import { openFilterModal } from "../../utils/openFilterModal";
+import { openFilterModal } from "../../utils";
 import "./toolbar.css";
 
 export const Toolbar = (props = {}) => {
@@ -30,7 +30,7 @@ export const Toolbar = (props = {}) => {
     className: "toolbar__icon-btn toolbar__sort-btn",
     attributes: { "aria-label": "Sort" },
   });
-  
+
   const chevronIcon = createElement("i", {
     className: "toolbar__sort-chevron",
     attributes: {
