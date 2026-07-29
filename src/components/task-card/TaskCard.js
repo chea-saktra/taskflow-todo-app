@@ -18,6 +18,7 @@ export const TaskCard = (props = {}) => {
     onEdit,
     onDelete,
     isFavoritesView = false,
+    isCompletedView = false,
   } = props;
 
   const overdue = isOverdue(task.dueDate) && !task.completed;
@@ -50,7 +51,7 @@ export const TaskCard = (props = {}) => {
     metaChildren.push(Badge({ type: task.priority, text: task.priority }));
   }
 
-  if (task.dueDate) {
+  if (!isCompletedView && task.dueDate) {
     metaChildren.push(
       createElement("span", {
         className: cnBEM("task-card__date", "overdue", overdue),
@@ -87,8 +88,8 @@ export const TaskCard = (props = {}) => {
     children: [title, metaRow],
   });
 
-  const isFav = task.isFavorite;
   const actionChildren = [];
+  const isFav = task.isFavorite || task.starred;
 
   if (isFavoritesView) {
     const btnFavorite = createElement("button", {
@@ -111,6 +112,23 @@ export const TaskCard = (props = {}) => {
       ],
     });
     actionChildren.push(btnFavorite);
+  } else if (isCompletedView) {
+    const completedDateText = task.completedAt
+      ? formatRelativeDate(task.completedAt)
+      : task.dueDate
+        ? formatRelativeDate(task.dueDate)
+        : "Completed";
+
+    const completedDateDisplay = createElement("span", {
+      className: "task-card__date task-card__date--completed",
+      children: [
+        createElement("i", {
+          attributes: { "data-lucide": "calendar-check" },
+        }),
+        document.createTextNode(completedDateText),
+      ],
+    });
+    actionChildren.push(completedDateDisplay);
   } else {
     const btnTrigger = createElement("button", {
       className: "task-card__action-btn",

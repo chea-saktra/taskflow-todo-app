@@ -1,4 +1,5 @@
 import { routerState } from "../state/router";
+import { CompletedView } from "../views/completed/Completed";
 import { DashboardView } from "../views/dashboard/Dashboard";
 import { FavoritesView } from "../views/favorites/Favorites";
 import { SearchView } from "../views/search/search";
@@ -17,6 +18,9 @@ export const Router = () => {
 
     case "favorites":
       return FavoritesView();
+
+    case "completed":
+      return CompletedView();
 
     case "search":
       return SearchView();

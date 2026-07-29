@@ -1,0 +1,12 @@
+.completed-view {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pr-space-md);
+  width: 100%;
+}
+.completed-view__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pr-space-sm);
+  width: 100%;
+}
