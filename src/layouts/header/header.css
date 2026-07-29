@@ -122,21 +122,13 @@
   border-color: var(--sys-color-primary);
 }
 
-
 @media (min-width: 768px) {
-  .app-header__brand,
-  .app-header__mobile-search-btn {
-    display: none !important;
-  }
   .app-header__theme {
     display: flex !important;
   }
 
-  .app-header__middle {
-    display: flex !important;
-    flex: 1;
-    max-width: 40rem;
-    margin-left: var(--pr-space-md);
+  .app-header__brand {
+    position: relative;
   }
 
   .app-header__profile {
@@ -160,7 +152,20 @@
 }
 
 @media (min-width: 1024px) {
-  .app-header__left {
+  .app-header__mobile-search-btn{
+    display: none !important;
+  }
+  .app-header__brand{
+    justify-content: center;
+    width:12rem;
+  }
+  .app-header__middle {
+    display: flex !important;
+    flex: 1;
+    max-width: 40rem;
+    margin-left: var(--pr-space-md);
+  }
+  .app-header__menu-btn {
     display: none !important;
   }
 

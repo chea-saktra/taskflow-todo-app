@@ -6,12 +6,23 @@ import { Button } from "../../components/button/Button";
 import { searchState } from "../../state/search";
 import { SearchController } from "../../features/search/controller";
 
+const ROUTE_TITLES = {
+  dashboard: "TaskFlow",
+  tasks: "All Tasks",
+  favorites: "Favorites",
+  today: "Today Tasks",
+  upcoming: "Upcoming",
+  completed: "Completed Tasks",
+  archive: "Archive",
+  settings: "Settings",
+};
 export const Header = (props = {}) => {
   const container = createElement("div", { className: "app-header" });
   const renderHeader = () => {
     container.innerHTML = "";
     const currentRoute = routerState.getRoute();
     const isSearchRoute = currentRoute === "search";
+    const currentTitle = ROUTE_TITLES[currentRoute] ;
 
     if (isSearchRoute) {
       const activeSearchInput = createElement("input", {
@@ -71,6 +82,35 @@ export const Header = (props = {}) => {
       return;
     }
 
+    const brandChildren = [];
+
+    if (currentRoute === "dashboard") {
+      brandChildren.push(
+        createElement("i", {
+          attributes: {
+            "data-lucide": "check-circle",
+          },
+        }),
+      );
+    } else if (currentRoute === "favorites") {
+      brandChildren.push(
+        createElement("i", {
+          className: "task-warning",
+          attributes: {
+            "data-lucide": "star",
+            fill: "#f59e0b",
+            stroke: "#f59e0b",
+          },
+        }),
+      );
+    }
+    brandChildren.push(
+      createElement("h1", {
+        className: "app-header__title",
+        textContent: currentTitle,
+      }),
+    );
+
     const leftSection = createElement("div", {
       className: "app-header__left flex items-center",
       children: [
@@ -82,15 +122,7 @@ export const Header = (props = {}) => {
         }),
         createElement("div", {
           className: "app-header__brand flex items-center gap-xs",
-          children: [
-            createElement("i", {
-              attributes: { "data-lucide": "check-circle" },
-            }),
-            createElement("h1", {
-              className: "app-header__title",
-              textContent: props.title || "TaskFlow",
-            }),
-          ],
+          children: brandChildren,
         }),
       ],
     });

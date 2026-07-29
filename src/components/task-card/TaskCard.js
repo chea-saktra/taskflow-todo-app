@@ -11,7 +11,14 @@ import { Dropdown } from "../dropdown/Dropdown";
 import "./task-card.css";
 
 export const TaskCard = (props = {}) => {
-  const { task = {}, onToggle, onFavorite, onEdit, onDelete } = props;
+  const {
+    task = {},
+    onToggle,
+    onFavorite,
+    onEdit,
+    onDelete,
+    isFavoritesView = false,
+  } = props;
 
   const overdue = isOverdue(task.dueDate) && !task.completed;
 
@@ -42,6 +49,7 @@ export const TaskCard = (props = {}) => {
   if (task.priority) {
     metaChildren.push(Badge({ type: task.priority, text: task.priority }));
   }
+
   if (task.dueDate) {
     metaChildren.push(
       createElement("span", {
@@ -79,40 +87,72 @@ export const TaskCard = (props = {}) => {
     children: [title, metaRow],
   });
 
-  const btnTrigger = createElement("button", {
-    className: "task-card__action-btn",
-    attributes: { "aria-label": "More options" },
-    children: createElement("i", {
-      attributes: { "data-lucide": "more-vertical" },
-    }),
-  });
+  const isFav = task.isFavorite;
+  const actionChildren = [];
 
-  const actionDropdown = Dropdown({
-    trigger: btnTrigger,
-    align: "right",
-    items: [
-      {
-        label: task.favorite ? "Unstar" : "Star",
-        icon: "star",
-        onClick: () => onFavorite && onFavorite(task.id),
+  if (isFavoritesView) {
+    const btnFavorite = createElement("button", {
+      className: `task-card__star-btn ${isFav ? "is-favorite" : ""}`,
+      attributes: { "aria-label": isFav ? "Unstar task" : "Star task" },
+      events: {
+        click: (e) => {
+          e.stopPropagation();
+          if (onFavorite) onFavorite(task.id);
+        },
       },
-      {
-        label: "Edit",
-        icon: "edit-3",
-        onClick: () => onEdit && onEdit(task),
-      },
-      {
-        label: "Delete",
-        icon: "trash-2",
-        isDanger: true,
-        onClick: () => onDelete && onDelete(task.id),
-      },
-    ],
+      children: [
+        createElement("i", {
+          attributes: {
+            "data-lucide": "star",
+            fill: "#f59e0b",
+            stroke: "#f59e0b",
+          },
+        }),
+      ],
+    });
+    actionChildren.push(btnFavorite);
+  } else {
+    const btnTrigger = createElement("button", {
+      className: "task-card__action-btn",
+      attributes: { "aria-label": "More options" },
+      children: createElement("i", {
+        attributes: { "data-lucide": "more-vertical" },
+      }),
+    });
+
+    const actionDropdown = Dropdown({
+      trigger: btnTrigger,
+      align: "right",
+      items: [
+        {
+          label: task.favorite ? "Unstar" : "Star",
+          icon: "star",
+          onClick: () => onFavorite && onFavorite(task.id),
+        },
+        {
+          label: "Edit",
+          icon: "edit-3",
+          onClick: () => onEdit && onEdit(task),
+        },
+        {
+          label: "Delete",
+          icon: "trash-2",
+          isDanger: true,
+          onClick: () => onDelete && onDelete(task.id),
+        },
+      ],
+    });
+    actionChildren.push(actionDropdown);
+  }
+
+  const actionContainer = createElement("div", {
+    className: "task-card__actions",
+    children: actionChildren,
   });
 
   const card = createElement("article", {
     className: cnBEM("task-card", "completed", task.completed),
-    children: [checkbox, content, actionDropdown],
+    children: [checkbox, content, actionContainer],
   });
 
   return card;
