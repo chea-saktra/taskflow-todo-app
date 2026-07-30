@@ -1,0 +1,11 @@
+.upcoming-view {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pr-space-md);
+}
+
+.upcoming-view__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pr-space-sm);
+}
