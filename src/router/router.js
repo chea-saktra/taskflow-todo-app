@@ -4,6 +4,7 @@ import { DashboardView } from "../views/dashboard/Dashboard";
 import { FavoritesView } from "../views/favorites/Favorites";
 import { SearchView } from "../views/search/search";
 import { TasksView } from "../views/tasks/Tasks";
+import { TodayView } from "../views/today/Today";
 
 const routes = {
   dashboard: DashboardView,
@@ -21,6 +22,9 @@ export const Router = () => {
 
     case "completed":
       return CompletedView();
+
+    case "today":
+      return TodayView();
 
     case "search":
       return SearchView();
