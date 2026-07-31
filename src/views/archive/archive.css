@@ -1,0 +1,11 @@
+.archive-view {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pr-space-md);
+}
+
+.archive-view__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pr-space-md);
+}

@@ -119,6 +119,7 @@ export const TasksView = () => {
           task,
           onToggle: (taskId) => TaskController.toggleTaskStatus(taskId),
           onFavorite: (taskId) => TaskController.toggleFavoriteTask(taskId),
+          onArchive: (id) => TaskController.toggleArchiveTask(id),
           onEdit: (taskData) => openTaskModal(taskData),
           onDelete: (taskId) => {
             if (confirm("Are you sure you want to delete this task?")) {

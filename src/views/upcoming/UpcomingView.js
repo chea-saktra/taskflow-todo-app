@@ -23,7 +23,7 @@ export const UpcomingView = () => {
     tomorrow.setDate(tomorrow.getDate() + 1);
 
     const upcomingTasks = allTasks.filter((task) => {
-      if (task.completed || !task.dueDate) return false;
+      if (task.completed || !task.dueDate || task.isArchived) return false;
       const taskDueDate = new Date(task.dueDate);
       taskDueDate.setHours(0, 0, 0, 0);
       return taskDueDate >= tomorrow;
@@ -49,6 +49,7 @@ export const UpcomingView = () => {
           onToggle: (id, isChecked) =>
             TaskController.toggleTaskStatus(id, isChecked),
           onFavorite: (id) => TaskController.toggleFavoriteTask(id),
+          onArchive: (id) => TaskController.toggleArchiveTask(id),
           onEdit: (taskData) => openTaskModal(taskData),
           onDelete: (id) => TaskController.removeTask(id),
         });

@@ -18,7 +18,8 @@ export const TodayView = () => {
     const todayStr = new Date().toISOString().split("T")[0];
 
     const todayTasks = allTasks.filter((task) => {
-      if (!task.dueDate) return false;
+
+      if (!task.dueDate||task.isArchived) return false;
       const taskDateStr = new Date(task.dueDate).toISOString().split("T")[0];
       return taskDateStr === todayStr && !task.completed;
     });
@@ -42,6 +43,7 @@ export const TodayView = () => {
             TaskController.toggleTaskStatus(id, isChecked),
           onFavorite: (id) => TaskController.toggleFavoriteTask(id),
           onEdit: (taskData) => openTaskModal(taskData),
+          onArchive: (id) => TaskController.toggleArchiveTask(id),
           onDelete: (id) => TaskController.removeTask(id),
         });
         taskContainer.append(card);

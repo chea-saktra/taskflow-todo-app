@@ -15,7 +15,7 @@ export const FavoritesView = () => {
     container.innerHTML = "";
     const allTasks = taskState.getTasks();
     const favoriteTasks = allTasks.filter(
-      (task) => task.isFavorite || task.starred,
+      (task) => (task.isFavorite || task.starred) && !task.isArchived,
     );
 
     const tasksContainer = createElement("div", {

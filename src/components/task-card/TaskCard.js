@@ -16,10 +16,11 @@ export const TaskCard = (props = {}) => {
     onToggle,
     onFavorite,
     onEdit,
+    onArchive,
     onDelete,
     isFavoritesView = false,
     isCompletedView = false,
-  } = props;
+  } = props; 
 
   const overdue = isOverdue(task.dueDate) && !task.completed;
 
@@ -151,6 +152,11 @@ export const TaskCard = (props = {}) => {
           label: "Edit",
           icon: "edit-3",
           onClick: () => onEdit && onEdit(task),
+        },
+        {
+          label: task.isAcrhived ? "Unarchive" : "Archive",
+          icon: task.isAcrhived ? "archive-restore" : "archive",
+          onClick: () => onArchive && onArchive(task.id),
         },
         {
           label: "Delete",

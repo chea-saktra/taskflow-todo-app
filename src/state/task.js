@@ -49,6 +49,7 @@ class TaskState {
       id: generateUUID(),
       completed: false,
       isFavorite: false,
+      isArchived: false,
       subtasks: [],
       ...taskData,
     };
@@ -71,8 +72,14 @@ class TaskState {
 
   toggleCompleted(id) {
     const task = this.getTaskById(id);
+
     if (task) {
-      this.updateTask(id, { completed: !task.completed });
+      const isNowCompleted = !task.completed;
+
+      this.updateTask(id, {
+        completed: isNowCompleted,
+        completedAt: isNowCompleted ? new Date().toISOString() : null,
+      });
     }
   }
 
@@ -80,6 +87,13 @@ class TaskState {
     const task = this.getTaskById(id);
     if (task) {
       this.updateTask(id, { isFavorite: !task.isFavorite });
+    }
+  }
+
+  toggleArchive(id) {
+    const task = this.getTaskById(id);
+    if (task) {
+      this.updateTask(id, { isArchived: !task.isArchived });
     }
   }
 }
