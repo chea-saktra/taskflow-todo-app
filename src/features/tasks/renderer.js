@@ -32,6 +32,9 @@ export const renderTaskList = (container, tasks = [], options = {}) => {
       onFavorite: (taskId) => {
         TaskController.toggleFavoriteTask(taskId);
       },
+      onArchive: (taskId) => {
+        TaskController.toggleArchiveTask(taskId);
+      },
       onEdit: (taskData) => {
         openTaskModal(taskData);
       },

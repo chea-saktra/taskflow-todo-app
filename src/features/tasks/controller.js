@@ -12,12 +12,18 @@ export const TaskController = {
     }
 
     taskState.addTask({ ...formData, title: validation.value });
-    showToast("Task create successfully!", "success");
+    showToast("Task created successfully!", "success");
     return true;
   },
 
-  toggleTaskStatus(taskId) {
-    taskState.toggleCompleted(taskId);
+  toggleTaskStatus(taskId, isChecked) {
+    if (typeof isChecked === "boolean") {
+      const updatedFields = { compoeted: isChecked };
+      if (isChecked) updatedFields.compoetedAt = new Date().toISOString();
+      taskState.updateTask(taskId, updatedFields);
+    } else {
+      taskState.toggleCompleted(taskId);
+    }
     showToast("Task status updated!", "info");
   },
 
@@ -34,5 +40,10 @@ export const TaskController = {
   editTask(taskId, updatedFields) {
     taskState.updateTask(taskId, updatedFields);
     showToast("Task updated successfully!", "success");
+  },
+
+  toggleArchiveTask(taskId) {
+    taskState.toggleArchive(taskId);
+    showToast("Archive status updated!", "info");
   },
 };

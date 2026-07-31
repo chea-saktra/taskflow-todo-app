@@ -1,4 +1,5 @@
 import { routerState } from "../state/router";
+import { ArchiveView } from "../views/archive/Archive";
 import { CompletedView } from "../views/completed/Completed";
 import { DashboardView } from "../views/dashboard/Dashboard";
 import { FavoritesView } from "../views/favorites/Favorites";
@@ -29,6 +30,9 @@ export const Router = () => {
 
     case "upcoming":
       return UpcomingView();
+
+    case "archive":
+      return ArchiveView();
 
     case "search":
       return SearchView();

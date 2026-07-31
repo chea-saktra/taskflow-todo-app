@@ -28,7 +28,7 @@ export const FilterController = {
   applyFilter(tasks = []) {
     const { category, priority, status, dueDate } = filterState;
     const selectedCategory = category.toLowerCase();
-    const selcetedPriority = priority.toLowerCase();
+    const selectedPriority = priority.toLowerCase();
     const selectedStatus = status.toLowerCase();
     const selectedDueDate = dueDate.toLowerCase();
 
@@ -42,7 +42,7 @@ export const FilterController = {
 
       const taskPriority = (task.priority || "").toLowerCase();
       const matchPriority =
-        selcetedPriority === "all" || selcetedPriority === taskPriority;
+        selectedPriority === "all" || selectedPriority === taskPriority;
 
       const taskStatus = task.completed
         ? "completed"
@@ -59,9 +59,9 @@ export const FilterController = {
           break;
 
         case "in-progress":
-          matchStatus =
-            !task.completed &&
-            WebTransportDatagramDuplexStream === "in-progress";
+          matchStatus = !task.completed && taskStatus === "in-progress";
+          break;
+
         case "all":
         default:
           matchStatus = true;
@@ -78,7 +78,7 @@ export const FilterController = {
         );
 
         if (selectedDueDate === "today") {
-          matchDueDate = taskDate.getTime() === today.getTime();
+          matchDueDate = taskDay.getTime() === today.getTime();
         } else if (
           selectedDueDate === "this-week" ||
           selectedDueDate === "this week"
