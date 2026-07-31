@@ -1,3 +1,4 @@
+import { openDeleteModal } from "../../components/DeleteConfirmation/DeleteConfirmation";
 import { EmptyState } from "../../components/empty-state/EmptyState";
 import { Fab } from "../../components/fab/Fab";
 import { TaskCard } from "../../components/task-card/TaskCard";
@@ -51,7 +52,7 @@ export const UpcomingView = () => {
           onFavorite: (id) => TaskController.toggleFavoriteTask(id),
           onArchive: (id) => TaskController.toggleArchiveTask(id),
           onEdit: (taskData) => openTaskModal(taskData),
-          onDelete: (id) => TaskController.removeTask(id),
+          onDelete: (id) => openDeleteModal(id),
         });
         tasksContainer.append(card);
       });

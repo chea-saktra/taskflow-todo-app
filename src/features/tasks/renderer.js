@@ -1,4 +1,5 @@
 import { Button } from "../../components/button/Button";
+import { openDeleteModal } from "../../components/DeleteConfirmation/DeleteConfirmation";
 import { EmptyState } from "../../components/empty-state/EmptyState";
 import { TaskCard } from "../../components/task-card/TaskCard";
 import { createElement, renderSlot } from "../../utils";
@@ -40,9 +41,7 @@ export const renderTaskList = (container, tasks = [], options = {}) => {
       },
 
       onDelete: (taskId) => {
-        if (confirm("Are you sure you want to delete this task?")) {
-          TaskController.removeTask(taskId);
-        }
+        openDeleteModal(taskId);
       },
     });
   });

@@ -1,3 +1,4 @@
+import { openDeleteModal } from "../../components/DeleteConfirmation/DeleteConfirmation";
 import { EmptyState } from "../../components/empty-state/EmptyState";
 import { Fab } from "../../components/fab/Fab";
 import { TaskCard } from "../../components/task-card/TaskCard";
@@ -44,7 +45,7 @@ export const TodayView = () => {
           onFavorite: (id) => TaskController.toggleFavoriteTask(id),
           onEdit: (taskData) => openTaskModal(taskData),
           onArchive: (id) => TaskController.toggleArchiveTask(id),
-          onDelete: (id) => TaskController.removeTask(id),
+          onDelete: (id) => openDeleteModal(id),
         });
         taskContainer.append(card);
       });

@@ -14,6 +14,7 @@ import { Toolbar } from "../../layouts/toolbar/Toolbar";
 import { sortState } from "../../state/sort";
 import { SortController } from "../../features/sort/controller";
 import { EmptyState } from "../../components/empty-state/EmptyState";
+import { openDeleteModal } from "../../components/DeleteConfirmation/DeleteConfirmation";
 
 export const TasksView = () => {
   const btnNewTask = Button({
@@ -121,11 +122,7 @@ export const TasksView = () => {
           onFavorite: (taskId) => TaskController.toggleFavoriteTask(taskId),
           onArchive: (id) => TaskController.toggleArchiveTask(id),
           onEdit: (taskData) => openTaskModal(taskData),
-          onDelete: (taskId) => {
-            if (confirm("Are you sure you want to delete this task?")) {
-              TaskController.removeTask(taskId);
-            }
-          },
+          onDelete: (taskId) => openDeleteModal(taskId),
         });
         listContent.append(card);
       });

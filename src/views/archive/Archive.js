@@ -5,6 +5,7 @@ import { TaskCard } from "../../components/task-card/TaskCard";
 import { TaskController } from "../../features/tasks/controller";
 import { taskState } from "../../state/task";
 import { createElement, openTaskModal } from "../../utils";
+import { openDeleteModal } from "../../components/DeleteConfirmation/DeleteConfirmation";
 
 export const ArchiveView = () => {
   const container = createElement("section", {
@@ -35,7 +36,7 @@ export const ArchiveView = () => {
           onFavorite: (id) => TaskController.toggleFavoriteTask(id),
           onArchive: (id) => TaskController.toggleArchiveTask(id),
           onEdit: (taskData) => openTaskModal(taskData),
-          onDelete: (id) => TaskController.removeTask(id),
+          onDelete: (id) => openDeleteModal(id),
         });
         tasksContainer.append(card);
       });
