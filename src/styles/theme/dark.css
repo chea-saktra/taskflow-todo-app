@@ -1,0 +1,63 @@
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  /* Overlay Colors */
+  --pr-color-overlay-dark: rgba(0, 0, 0, 0.85);
+  --pr-color-overlay-slate: rgba(3, 7, 18, 0.8);
+  --pr-color-danger-subtle: rgba(239, 68, 68, 0.15);
+  --pr-color-hover-bg: rgba(255, 255, 255, 0.06);
+
+  /* System Colors */
+  --sys-bg: var(--pr-color-dark-bg);
+  --sys-bg-surface: var(--pr-color-dark-surface);
+  --sys-bg-card: var(--pr-color-dark-surface);
+  --sys-border: var(--pr-color-dark-border);
+
+  /* Text Colors​​ */
+  --sys-text: var(--pr-color-neutral-50);
+  --sys-text-muted: var(--pr-color-neutral-400);
+  --sys-text-light: var(--pr-color-neutral-500);
+
+  /* Primary & Feedback Colors */
+  --sys-color-primary: var(--pr-color-primary-400);
+  --sys-color-primary-hover: var(--pr-color-primary-500);
+  --sys-color-success: var(--pr-color-success-500);
+  --sys-color-warning: var(--pr-color-warning-400);
+  --sys-color-danger: var(--pr-color-danger-500);
+
+  --sys-divider: rgba(255, 255, 255, 0.08);
+  --sys-outline: rgba(255, 255, 255, 0.08);
+  --sys-focus-ring: rgba(96, 165, 250, 0.45);
+
+  /* Dark Shadows */
+  --sys-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.5);
+  --sys-shadow-md: 0 4px 12px -2px rgba(0, 0, 0, 0.6);
+  --sys-shadow-lg: 0 12px 24px -4px rgba(0, 0, 0, 0.7);
+
+  /* Dark Category Variables */
+  --cat-work-color: var(--pr-color-primary-400);
+  --cat-study-color: #34d399;
+  --cat-personal-color: #c084fc;
+  --cat-shopping-color: var(--pr-color-warning-400);
+
+  --cat-work-bg: rgba(96, 165, 250, 0.12);
+  --cat-work-text: var(--pr-color-primary-300);
+  --cat-study-bg: rgba(52, 211, 153, 0.12);
+  --cat-study-text: #6ee7b7;
+  --cat-personal-bg: rgba(192, 132, 252, 0.12);
+  --cat-personal-text: #e9d5ff;
+  --cat-shopping-bg: rgba(245, 158, 11, 0.12);
+  --cat-shopping-text: #fde68a;
+
+  /* Component Specific Overrides */
+  --comp-task-card-bg: var(--sys-bg-card);
+  --comp-task-card-completed-bg: var(--pr-color-dark-bg);
+
+  --comp-input-bg: var(--pr-color-dark-bg);
+  --comp-toast-bg: var(--pr-color-dark-elevated);
+  --comp-toast-border: 1px solid rgba(34, 197, 94, 0.25);
+  --comp-modal-bg: var(--pr-color-dark-elevated);
+
+  --comp-scrollbar-thumb: var(--pr-color-neutral-700);
+  --comp-scrollbar-thumb-hover: var(--pr-color-neutral-600);
+}

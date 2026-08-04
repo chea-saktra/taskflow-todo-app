@@ -1,0 +1,80 @@
+:root,
+[data-theme="light"] {
+  color-scheme: light;
+
+  /* Overlay Colors */
+  --pr-color-overlay-dark: rgba(0, 0, 0, 0.4);
+  --pr-color-overlay-slate: rgba(15, 23, 42, 0.4);
+  --pr-color-danger-subtle: rgba(239, 68, 68, 0.08);
+  --pr-color-hover-bg: var(--pr-color-neutral-100);
+
+  /* System Colors */
+  --sys-bg: var(--pr-color-neutral-50);
+  --sys-bg-surface: var(--pr-color-white);
+  --sys-bg-card: var(--pr-color-white);
+  --sys-border: var(--pr-color-neutral-200);
+
+  --sys-text: var(--pr-color-neutral-900);
+  --sys-text-muted: var(--pr-color-neutral-500);
+  --sys-text-light: var(--pr-color-neutral-400);
+
+  --sys-color-primary: var(--pr-color-primary-500);
+  --sys-color-primary-hover: var(--pr-color-primary-600);
+  --sys-color-success: var(--pr-color-success-500);
+  --sys-color-warning: var(--pr-color-warning-500);
+  --sys-color-danger: var(--pr-color-danger-500);
+
+  --sys-divider: var(--pr-color-neutral-200);
+  --sys-outline: rgba(15, 23, 42, 0.08);
+  --sys-focus-ring: rgba(59, 130, 246, 0.35);
+
+  /* Shadows */
+  --sys-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.03);
+  --sys-shadow-md:
+    0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  --sys-shadow-lg:
+    0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.03);
+
+  /* Category Variables */
+  --cat-work-color: var(--pr-color-primary-500);
+  --cat-study-color: #10b981;
+  --cat-personal-color: #a855f7;
+  --cat-shopping-color: var(--pr-color-warning-500);
+  --cat-work-bg: var(--pr-color-primary-100);
+  --cat-work-text: var(--pr-color-primary-700);
+  --cat-study-bg: #dcfce7;
+  --cat-study-text: #15803d;
+  --cat-personal-bg: #f3e8ff;
+  --cat-personal-text: #7e22ce;
+  --cat-shopping-bg: #fef3fc;
+  --cat-shopping-text: #b45309;
+
+  /* Component Specific Tokens */
+  --comp-task-card-bg: var(--sys-bg-card);
+  --comp-task-card-completed-bg: var(--pr-color-neutral-50);
+  --comp-task-card-padding: var(--pr-space-md);
+  --comp-task-card-radius: var(--pr-radius-md);
+  --comp-task-card-shadow: var(--sys-shadow-sm);
+
+  --comp-btn-radius: var(--pr-radius-md);
+  --comp-btn-font-size: var(--pr-fs-small);
+  --comp-btn-weight: var(--pr-font-weight-semibold);
+
+  --comp-input-bg: var(--sys-bg-surface);
+  --comp-input-radius: var(--pr-radius-md);
+  --comp-input-padding: var(--pr-space-sm) var(--pr-space-md);
+  --comp-input-border: 1px solid var(--sys-border);
+
+  --comp-toast-bg: var(--pr-color-white);
+  --comp-toast-border: 1px solid rgba(34, 197, 94, 0.2);
+  --comp-toast-radius: var(--pr-radius-md);
+  --comp-toast-shadow: var(--sys-shadow-md);
+
+  --comp-modal-bg: var(--sys-bg-surface);
+  --comp-modal-radius: var(--pr-radius-lg);
+  --comp-modal-padding: var(--pr-space-lg);
+  --comp-modal-shadow: var(--sys-shadow-lg);
+
+  --comp-scrollbar-thumb: var(--pr-color-neutral-300);
+  --comp-scrollbar-thumb-hover: var(--pr-color-neutral-400);
+}

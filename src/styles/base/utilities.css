@@ -1,5 +1,9 @@
 /* Display Utilities */
 
+.hidden {
+  display: none;
+}
+
 .block {
   display: block;
 }

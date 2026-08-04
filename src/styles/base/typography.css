@@ -44,7 +44,7 @@ h4,
 }
 
 .text-body {
-  font-size: var(--pr-fs-large);
+  font-size: var(--pr-fs-body);
   font-weight: var(--pr-font-weight-regular);
   line-height: 1.5;
 }
@@ -55,7 +55,7 @@ h4,
   line-height: 1.4;
 }
 
-.tex-caption {
+.text-caption {
   font-size: var(--pr-fs-caption);
   font-weight: var(--pr-font-weight-semibold);
   line-height: 1.2;
@@ -67,7 +67,7 @@ h4,
   font-weight: var(--pr-font-weight-regular);
 }
 
-.font-semibld {
+.font-semibold {
   font-weight: var(--pr-font-weight-semibold);
 }
 
