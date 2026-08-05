@@ -10,8 +10,3 @@ export function escapeHTML(string) {
 
   return String(string).replace(/[&<>"'/]/g, (s) => map[s]);
 }
-
-export function cnBEM(blockElement, modifier, condition) {
-  if (!condition || !modifier) return blockElement;
-  return `${blockElement} ${blockElement}--${modifier}`;
-}
