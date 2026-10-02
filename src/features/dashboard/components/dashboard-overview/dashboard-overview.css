@@ -1,0 +1,48 @@
+.dashboard-overview {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pr-space-md);
+  width: 100%;
+}
+
+/* Heading Section  */
+.dashboard-overview__heading {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pr-space-3xs);
+}
+
+.dashboard-overview__title {
+  font-size: var(--pr-fs-h2);
+  font-weight: var(--pr-font-weight-bold);
+  color: var(--sys-text);
+  line-height: var(--pr-lh-heading);
+  letter-spacing: var(--pr-tracking-tight);
+}
+
+.dashboard-overview__description {
+  font-size: var(--pr-fs-small);
+  color: var(--sys-text-muted);
+  line-height: var(--pr-lh-base);
+}
+
+/* Cards Responsive Grid  */
+.dashboard-overview__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--pr-space-md);
+  width: 100%;
+}
+
+/* @media (min-width: 576px) {
+  .dashboard-overview__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .dashboard-overview__grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--pr-space-lg);
+  }
+} */

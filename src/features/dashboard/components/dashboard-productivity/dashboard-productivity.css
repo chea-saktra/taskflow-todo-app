@@ -1,0 +1,64 @@
+.dashboard-productivity {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pr-space-md);
+  width: 100%;
+  min-width: 0;
+}
+
+/* Heading Section  */
+.dashboard-productivity__heading {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pr-space-3xs);
+}
+
+.dashboard-productivity__title {
+  font-size: var(--pr-fs-h2);
+  font-weight: var(--pr-font-weight-bold);
+  color: var(--sys-text);
+  line-height: var(--pr-lh-heading);
+  letter-spacing: var(--pr-tracking-tight);
+}
+
+.dashboard-productivity__description {
+  font-size: var(--pr-fs-small);
+  color: var(--sys-text-muted);
+  line-height: var(--pr-lh-base);
+}
+
+/* Productivity Summary Grid  */
+.dashboard-productivity__summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: var(--pr-space-sm);
+  margin-bottom: var(--pr-space-xs);
+  width: 100%;
+}
+
+/* Metric Items  */
+.dashboard-productivity__metric {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pr-space-3xs);
+  padding: var(--pr-space-sm);
+  border-radius: var(--pr-radius-md);
+  background-color: var(--sys-bg-surface-subtle);
+  border: 1px solid var(--sys-border);
+  min-width: 0;
+}
+
+.dashboard-productivity__metric-label {
+  font-size: var(--pr-fs-caption);
+  font-weight: var(--pr-font-weight-medium);
+  color: var(--sys-text-muted);
+  text-transform: uppercase;
+  letter-spacing: var(--pr-tracking-wider);
+}
+
+.dashboard-productivity__metric-value {
+  font-size: var(--pr-fs-h3);
+  font-weight: var(--pr-font-weight-bold);
+  color: var(--sys-text);
+  line-height: var(--pr-lh-tight);
+}
