@@ -1,0 +1,102 @@
+.stat-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--pr-space-sm);
+  padding: var(--comp-task-card-padding, var(--pr-space-md));
+  background-color: var(--sys-bg-card);
+  border: 1px solid var(--sys-border);
+  border-radius: var(--comp-task-card-radius, var(--pr-radius-md));
+  box-shadow: var(--comp-task-card-shadow, var(--sys-shadow-sm));
+  transition:
+    transform var(--pr-anim-fast),
+    box-shadow var(--pr-anim-fast);
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--sys-shadow-md);
+}
+
+/* Header Section */
+.stat-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--pr-space-xs);
+}
+
+.stat-card__title {
+  font-size: var(--pr-fs-small);
+  font-weight: var(--pr-font-weight-semibold);
+  color: var(--sys-text-muted);
+  text-transform: capitalize;
+}
+
+.stat-card__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--pr-size-icon-lg);
+  height: var(--pr-size-icon-lg);
+  color: var(--sys-color-primary);
+  flex-shrink: 0;
+}
+
+.stat-card__icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Body Section */
+.stat-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pr-space-3xs);
+}
+
+.stat-card__value {
+  font-size: var(--pr-fs-h2);
+  font-weight: var(--pr-font-weight-bold);
+  line-height: var(--pr-lh-tight);
+  color: var(--sys-text);
+}
+
+.stat-card__subtitle {
+  font-size: var(--pr-fs-caption);
+  color: var(--sys-text-light);
+}
+
+/* Primary Modifiers */
+.stat-card--primary .stat-card__icon {
+  color: var(--sys-color-primary);
+}
+
+.stat-card--success .stat-card__icon {
+  color: var(--sys-color-success);
+}
+
+.stat-card--warning .stat-card__icon {
+  color: var(--sys-color-warning);
+}
+
+.stat-card--danger .stat-card__icon {
+  color: var(--sys-color-danger);
+}
+
+/* Category Specific Color Modifiers */
+.stat-card--work .stat-card__icon {
+  color: var(--cat-work-color);
+}
+
+.stat-card--study .stat-card__icon {
+  color: var(--cat-study-color);
+}
+
+.stat-card--personal .stat-card__icon {
+  color: var(--cat-personal-color);
+}
+
+.stat-card--shopping .stat-card__icon {
+  color: var(--cat-shopping-color);
+}

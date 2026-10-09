@@ -1,0 +1,40 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--sys-bg-card);
+  border: 1px solid var(--sys-border);
+  border-radius: var(--comp-task-card-radius, var(--pr-radius-md));
+  box-shadow: var(--comp-task-card-shadow, var(--sys-shadow-sm));
+  overflow: hidden;
+  transition:
+    box-shadow var(--pr-anim-fast),
+    transform var(--pr-anim-fast);
+}
+
+/* Header Section */
+.card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--comp-task-card-padding, var(--pr-space-md));
+  border-bottom: 1px solid var(--sys-divider);
+}
+
+/* Body Section */
+.card__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: var(--comp-task-card-padding, var(--pr-space-md));
+  gap: var(--pr-space-sm);
+}
+
+/* Footer Section */
+.card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--pr-space-sm) var(--comp-task-card-padding, var(--pr-space-md));
+  border-top: 1px solid var(--sys-divider);
+  background-color: var(--pr-color-hover-bg);
+}
