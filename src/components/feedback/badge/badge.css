@@ -1,0 +1,258 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--pr-font-family-base);
+  font-weight: var(--pr-font-weight-semibold);
+  line-height: var(--pr-lh-tight);
+  white-space: nowrap;
+  vertical-align: middle;
+  border: 1px solid transparent;
+  transition: all var(--pr-anim-fast);
+}
+
+.badge--sm {
+  font-size: var(--pr-fs-badge);
+  padding: 0.125rem var(--pr-space-2xs);
+  border-radius: var(--pr-radius-sm);
+}
+
+.badge--md {
+  font-size: var(--pr-fs-caption);
+  padding: 0.25rem var(--pr-space-xs);
+  border-radius: var(--pr-radius-md);
+}
+
+.badge--lg {
+  font-size: var(--pr-fs-small);
+  padding: 0.375rem var(--pr-space-sm);
+  border-radius: var(--pr-radius-md);
+}
+
+.badge--default.badge--solid {
+  background-color: var(--pr-color-neutral-200);
+  color: var(--pr-color-neutral-800);
+}
+
+.badge--primary.badge--solid {
+  background-color: var(--sys-color-primary);
+  color: var(--pr-color-white);
+}
+
+.badge--success.badge--solid {
+  background-color: var(--sys-color-success);
+  color: var(--pr-color-white);
+}
+
+.badge--warning.badge--solid {
+  background-color: var(--sys-color-warning);
+  color: var(--pr-color-white);
+}
+
+.badge--danger.badge--solid {
+  background-color: var(--sys-color-danger);
+  color: var(--pr-color-white);
+}
+
+/* Category Specific Badges */
+.badge--work.badge--solid {
+  background-color: var(--cat-work-color);
+  color: var(--pr-color-white);
+}
+
+.badge--study.badge--solid {
+  background-color: var(--cat-study-color);
+  color: var(--pr-color-white);
+}
+
+.badge--personal.badge--solid {
+  background-color: var(--cat-personal-color);
+  color: var(--pr-color-white);
+}
+
+.badge--shopping.badge--solid {
+  background-color: var(--cat-shopping-color);
+  color: var(--pr-color-white);
+}
+
+/* ==========================================
+   Priority Specific Badges (Subtle)
+   ========================================== */
+.badge--low.badge--subtle {
+  background-color: var(--pr-color-neutral-100);
+  color: var(--sys-text-muted);
+}
+
+.badge--medium.badge--subtle {
+  background-color: var(--cat-shopping-bg);
+  color: var(--cat-shopping-text);
+}
+
+.badge--high.badge--subtle {
+  background-color: var(--pr-color-danger-subtle);
+  color: var(--sys-color-danger);
+}
+
+/* Priority Specific Badges (Solid) */
+.badge--low.badge--solid {
+  background-color: var(--pr-color-neutral-400);
+  color: var(--pr-color-white);
+}
+
+.badge--medium.badge--solid {
+  background-color: var(--sys-color-warning);
+  color: var(--pr-color-white);
+}
+
+.badge--high.badge--solid {
+  background-color: var(--sys-color-danger);
+  color: var(--pr-color-white);
+}
+
+/* Default Fallback Background */
+.badge--general.badge--subtle,
+.badge--default.badge--subtle {
+  background-color: var(--pr-color-neutral-100);
+  color: var(--sys-text-muted);
+}
+
+/* Subtle Variant */
+.badge--default.badge--subtle {
+  background-color: var(--pr-color-neutral-100);
+  color: var(--sys-text-muted);
+}
+
+.badge--primary.badge--subtle {
+  background-color: var(--cat-work-bg);
+  color: var(--cat-work-text);
+}
+
+.badge--success.badge--subtle {
+  background-color: var(--cat-study-bg);
+  color: var(--cat-study-text);
+}
+
+.badge--warning.badge--subtle {
+  background-color: var(--cat-shopping-bg);
+  color: var(--cat-shopping-text);
+}
+
+.badge--danger.badge--subtle {
+  background-color: var(--pr-color-danger-subtle);
+  color: var(--sys-color-danger);
+}
+
+.badge--work.badge--subtle {
+  background-color: var(--cat-work-bg);
+  color: var(--cat-work-text);
+}
+
+.badge--study.badge--subtle {
+  background-color: var(--cat-study-bg);
+  color: var(--cat-study-text);
+}
+
+.badge--personal.badge--subtle {
+  background-color: var(--cat-personal-bg);
+  color: var(--cat-personal-text);
+}
+
+.badge--shopping.badge--subtle {
+  background-color: var(--cat-shopping-bg);
+  color: var(--cat-shopping-text);
+}
+
+/* Outline Variant */
+.badge--outline {
+  background-color: transparent;
+}
+
+.badge--default.badge--outline {
+  border-color: var(--sys-border);
+  color: var(--sys-text);
+}
+
+.badge--primary.badge--outline {
+  border-color: var(--sys-color-primary);
+  color: var(--sys-color-primary);
+}
+
+.badge--success.badge--outline {
+  border-color: var(--sys-color-success);
+  color: var(--sys-color-success);
+}
+
+.badge--warning.badge--outline {
+  border-color: var(--sys-color-warning);
+  color: var(--sys-color-warning);
+}
+
+.badge--danger.badge--outline {
+  border-color: var(--sys-color-danger);
+  color: var(--sys-color-danger);
+}
+
+/* Pill Variant (Rounded borders) */
+.badge--pill {
+  border-radius: var(--pr-radius-full);
+}
+
+/* ==========================================
+   Task Status Specific Badges (Solid)
+   ========================================== */
+
+.badge--todo.badge--solid {
+  background-color: var(--pr-color-neutral-400);
+  color: var(--pr-color-white);
+}
+
+.badge--in-progress.badge--solid,
+.badge--inprogress.badge--solid {
+  background-color: var(--sys-color-primary);
+  color: var(--pr-color-white);
+}
+
+.badge--completed.badge--solid {
+  background-color: var(--sys-color-success);
+  color: var(--pr-color-white);
+}
+
+/* ==========================================
+   Task Status Specific Badges (Subtle)
+   ========================================== */
+
+.badge--todo.badge--subtle {
+  background-color: var(--pr-color-neutral-100);
+  color: var(--sys-text-muted);
+}
+
+.badge--in-progress.badge--subtle,
+.badge--inprogress.badge--subtle {
+  background-color: var(--pr-color-primary-50);
+  color: var(--sys-color-primary);
+}
+
+.badge--completed.badge--subtle {
+  background-color: var(--cat-study-bg);
+  color: var(--sys-color-success);
+}
+
+/* ==========================================
+   Task Status Specific Badges (Outline)
+   ========================================== */
+
+.badge--todo.badge--outline {
+  background-color: var(--pr-color-neutral-400);
+  color: var(--sys-text-muted);
+}
+
+.badge--in-progress.badge--outline,
+.badge--inprogress.badge--outline {
+  background-color: var(--sys-color-primary);
+  color: var(--sys-color-primary);
+}
+
+.badge--completed.badge--outline {
+  background-color: var(--sys-color-success);
+  color: var(--sys-color-success);
+}

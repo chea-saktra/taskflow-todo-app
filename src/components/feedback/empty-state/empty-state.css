@@ -1,0 +1,89 @@
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--pr-space-xl) var(--pr-space-md);
+  margin-inline: auto;
+  max-width: 28rem;
+  width: 100%;
+}
+
+/* Icon Container */
+.empty-state__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 4rem;
+  height: 4rem;
+  background-color: var(--sys-bg-surface-subtle);
+  border-radius: var(--pr-radius-full);
+  color: var(--sys-text-muted);
+  margin-bottom: var(--pr-space-md);
+  transition:
+    background-color var(--pr-anim-fast),
+    color var(--pr-anim-fast);
+}
+
+.empty-state__icon i,
+.empty-state__icon svg {
+  width: var(--pr-size-icon-hero);
+  height: var(--pr-size-icon-hero);
+  stroke-width: 1.5;
+}
+
+/* Title */
+.empty-state__title {
+  font-size: var(--pr-fs-h3);
+  font-weight: var(--pr-font-weight-semibold);
+  color: var(--sys-text);
+  line-height: var(--pr-lh-heading);
+  margin-bottom: var(--pr-space-xs);
+}
+
+/* Description */
+.empty-state__description {
+  font-size: var(--pr-fs-small);
+  color: var(--sys-text-muted);
+  line-height: var(--pr-lh-base);
+  margin-bottom: var(--pr-space-lg);
+  max-width: 22rem;
+}
+
+/* Action Button */
+.empty-state__action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--pr-space-xs);
+  padding: var(--pr-space-2xs) var(--pr-space-md);
+  min-height: 2.5rem;
+  font-size: var(--pr-fs-small);
+  font-weight: var(--pr-font-weight-semibold);
+  color: var(--pr-color-white);
+  background-color: var(--sys-color-primary);
+  border-radius: var(--pr-radius-md);
+  border: none;
+  cursor: pointer;
+  box-shadow: var(--sys-shadow-sm);
+  transition:
+    background-color var(--pr-anim-fast),
+    box-shadow var(--pr-anim-fast),
+    transform var(--pr-anim-fast);
+}
+
+.empty-state__action:hover {
+  background-color: var(--sys-color-primary-hover);
+  box-shadow: var(--sys-shadow-md);
+}
+
+.empty-state__action:active {
+  transform: translateY(1px);
+}
+
+.empty-state__action i,
+.empty-state__action svg {
+  width: var(--pr-size-icon-sm);
+  height: var(--pr-size-icon-sm);
+}

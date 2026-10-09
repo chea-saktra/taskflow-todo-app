@@ -1,0 +1,82 @@
+/* Main Container Wrapper */
+.progress {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pr-space-2xs);
+  width: 100%;
+}
+
+/* Header (Label and Percentage Value) */
+.progress__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: var(--pr-fs-small);
+  line-height: var(--pr-lh-snug);
+}
+
+.progress__label {
+  font-weight: var(--pr-font-weight-semibold);
+  color: var(--sys-text);
+}
+
+.progress__value {
+  font-weight: var(--pr-font-weight-medium);
+  color: var(--sys-text-muted);
+}
+
+/* Progress Track Background */
+.progress__track {
+  width: 100%;
+  background-color: var(--pr-color-hover-bg);
+  border-radius: var(--pr-radius-full);
+  overflow: hidden;
+  position: relative;
+}
+
+/* Progress Bar Indicator Fill */
+.progress__bar {
+  height: 100%;
+  background-color: var(--sys-color-primary);
+  border-radius: var(--pr-radius-full);
+  transition: width var(--pr-anim-fast) ease-in-out;
+}
+
+/* Size Variants */
+
+/* Size: Small */
+.progress--sm .progress__track {
+  height: 0.25rem; /* 4px */
+}
+
+/* Size: Medium (Default) */
+.progress--md .progress__track {
+  height: 0.5rem; /* 8px */
+}
+
+/* Size: Large */
+.progress--lg .progress__track {
+  height: 0.75rem; /* 12px */
+}
+
+/* Color/Semantic Variants */
+
+.progress--primary .progress__bar {
+  background-color: var(--sys-color-primary);
+}
+
+.progress--success .progress__bar {
+  background-color: var(--pr-color-success);
+}
+
+.progress--warning .progress__bar {
+  background-color: var(--pr-color-warning);
+}
+
+.progress--danger .progress__bar {
+  background-color: var(--sys-color-danger);
+}
+
+.progress--info .progress__bar {
+  background-color: var(--pr-color-info);
+}
