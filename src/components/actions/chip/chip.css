@@ -1,0 +1,98 @@
+.chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--pr-space-2xs);
+  padding: var(--pr-space-2xs) var(--pr-space-sm);
+  border-radius: var(--pr-radius-full);
+  background-color: var(--sys-bg-surface);
+  color: var(--sys-text-muted);
+  font-family: inherit;
+  font-size: var(--pr-fs-small);
+  font-weight: var(--pr-font-weight-semibold);
+  border: var(--pr-border-thin) solid var(--sys-border);
+  cursor: pointer;
+  white-space: nowrap;
+  user-select: none;
+  box-shadow: var(--sys-shadow-sm);
+  transition:
+    background-color var(--pr-anim-fast),
+    border-color var(--pr-anim-fast),
+    color var(--pr-anim-fast);
+}
+
+.chip i,
+.chip svg {
+  width: var(--pr-size-icon-xs);
+  height: var(--pr-size-icon-xs);
+  flex-shrink: 0;
+}
+
+.chip:hover {
+  background-color: var(--pr-color-hover-bg);
+  border-color: var(--pr-color-neutral-300);
+  color: var(--sys-text);
+}
+
+.chip:active {
+  transform: scale(0.98);
+}
+
+/* ==========================================================================
+   Base Selected State
+   ========================================================================== */
+
+.chip--selected {
+  background-color: var(--pr-color-primary-50);
+  color: var(--sys-color-primary);
+  border-color: var(--pr-color-primary-300);
+}
+
+/* ==========================================================================
+   Category & ID Dynamic Color Tokens (Light & Dark Support)
+   ========================================================================== */
+.chip--selected[data-id="today"],
+.chip--selected[data-id="work"] {
+  background-color: var(--cat-work-bg);
+  color: var(--cat-work-text);
+  border-color: var(--cat-work-color);
+}
+
+.chip--selected[data-id="low"],
+.chip--selected[data-id="completed"],
+.chip--selected[data-id="study"] {
+  background-color: var(--cat-study-bg);
+  color: var(--cat-study-text);
+  border-color: var(--cat-study-color);
+}
+
+.chip--selected[data-id="this-week"],
+.chip--selected[data-id="this week"],
+.chip--selected[data-id="pending"],
+.chip--selected[data-id="personal"] {
+  background-color: var(--cat-personal-bg);
+  color: var(--cat-personal-text);
+  border-color: var(--cat-personal-color);
+}
+
+.chip--selected[data-id="this-month"],
+.chip--selected[data-id="this month"],
+.chip--selected[data-id="medium"],
+.chip--selected[data-id="shopping"] {
+  background-color: var(--cat-shopping-bg);
+  color: var(--cat-shopping-text);
+  border-color: var(--cat-shopping-color);
+}
+
+.chip--selected[data-id="danger"],
+.chip--selected[data-id="high"] {
+  background-color: var(--pr-color-danger-subtle);
+  color: var(--sys-color-danger);
+  border-color: var(--sys-color-danger);
+}
+
+.chip--selected[data-id="in-progress"] {
+  background-color: var(--pr-color-primary-100);
+  color: var(--pr-color-primary-700);
+  border-color: var(--pr-color-primary-400);
+}
