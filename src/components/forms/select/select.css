@@ -1,0 +1,187 @@
+/* Outer Field Wrapper (Label, Input, Hint/Error) */
+.form-select-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pr-space-2xs);
+  width: 100%;
+}
+
+/* Label Style */
+.form-select__label {
+  font-size: var(--pr-fs-small);
+  font-weight: var(--pr-font-weight-semibold);
+  color: var(--sys-text);
+  line-height: var(--pr-lh-snug);
+  user-select: none;
+}
+
+/* Main Select Container */
+.form-select {
+  position: relative;
+  width: 100%;
+}
+
+/* Select Trigger Button */
+.form-select__trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background-color: var(--comp-input-bg, var(--sys-bg-surface));
+  color: var(--sys-text);
+  font-family: var(--pr-font-family-base);
+  font-size: var(--pr-fs-body);
+  padding: var(--comp-input-padding, var(--pr-space-sm) var(--pr-space-md));
+  border: var(--comp-input-border, 1px solid var(--sys-border));
+  border-radius: var(--comp-input-radius, var(--pr-radius-md));
+  cursor: pointer;
+  text-align: left;
+  transition:
+    border-color var(--pr-anim-fast),
+    box-shadow var(--pr-anim-fast);
+}
+
+.form-select__trigger:hover:not(:disabled) {
+  border-color: var(--sys-text-muted);
+}
+
+.form-select__trigger:focus-visible {
+  outline: none;
+  border-color: var(--sys-color-primary);
+  box-shadow: 0 0 0 3px var(--sys-focus-ring);
+}
+
+/* Value & Placeholder */
+.form-select__value {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.form-select__value.is-placeholder {
+  color: var(--sys-text-light);
+}
+
+/* Chevron Icon */
+.form-select__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--pr-size-icon-sm);
+  height: var(--pr-size-icon-sm);
+  margin-left: var(--pr-space-xs);
+  color: var(--sys-text-muted);
+  flex-shrink: 0;
+  transition:
+    transform var(--pr-anim-fast),
+    color var(--pr-anim-fast);
+}
+
+.form-select__icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Dropdown Menu */
+.form-select__menu {
+  position: absolute;
+  top: calc(100% + var(--pr-space-3xs));
+  left: 0;
+  right: 0;
+  z-index: var(--pr-z-dropdown);
+  max-height: 240px;
+  overflow-y: auto;
+  padding: var(--pr-space-3xs);
+  background-color: var(--sys-bg-surface);
+  border: 1px solid var(--sys-border);
+  border-radius: var(--pr-radius-md);
+  box-shadow: var(--sys-shadow-md);
+
+  /* Hidden State by Default */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition:
+    opacity var(--pr-anim-fast),
+    transform var(--pr-anim-fast),
+    visibility var(--pr-anim-fast);
+}
+
+/* Active Open State */
+.form-select.is-open .form-select__menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.form-select.is-open .form-select__icon {
+  transform: rotate(180deg);
+  color: var(--sys-color-primary);
+}
+
+.form-select.is-open .form-select__trigger {
+  border-color: var(--sys-color-primary);
+  box-shadow: 0 0 0 3px var(--sys-focus-ring);
+}
+
+/* Option Item */
+.form-select__option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: var(--pr-space-xs) var(--pr-space-sm);
+  font-family: var(--pr-font-family-base);
+  font-size: var(--pr-fs-small);
+  color: var(--sys-text);
+  border-radius: var(--pr-radius-sm);
+  cursor: pointer;
+  text-align: left;
+  transition:
+    background-color var(--pr-anim-fast),
+    color var(--pr-anim-fast);
+}
+
+.form-select__option:hover {
+  background-color: var(--pr-color-hover-bg);
+}
+
+/* Selected Option State */
+.form-select__option.is-selected {
+  background-color: var(--cat-work-bg);
+  color: var(--sys-color-primary);
+  font-weight: var(--pr-font-weight-semibold);
+}
+
+.form-select__option i,
+.form-select__option svg {
+  width: var(--pr-size-icon-sm);
+  height: var(--pr-size-icon-sm);
+  color: var(--sys-color-primary);
+  flex-shrink: 0;
+}
+
+/* BEM Modifiers: Error & Disabled States */
+.form-select--error .form-select__trigger {
+  border-color: var(--sys-color-danger) !important;
+}
+
+.form-select--disabled .form-select__trigger {
+  opacity: var(--pr-opacity-disabled);
+  cursor: not-allowed;
+  background-color: var(--pr-color-neutral-100);
+}
+
+/* Helper Texts: Hint & Error */
+.form-select__hint {
+  font-size: var(--pr-fs-caption);
+  color: var(--sys-text-muted);
+  line-height: var(--pr-lh-snug);
+}
+
+.form-select__error {
+  font-size: var(--pr-fs-caption);
+  font-weight: var(--pr-font-weight-semibold);
+  color: var(--sys-color-danger);
+  line-height: var(--pr-lh-snug);
+}

@@ -1,0 +1,85 @@
+/* Wrapper Container */
+.form-textarea-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pr-space-2xs);
+  width: 100%;
+}
+
+/* Label Style */
+.form-textarea__label {
+  font-size: var(--pr-fs-small);
+  font-weight: var(--pr-font-weight-semibold);
+  color: var(--sys-text);
+  line-height: var(--pr-lh-snug);
+  user-select: none;
+}
+
+/* Textarea Element Base Style */
+.form-textarea {
+  width: 100%;
+  min-height: 5rem;
+  resize: vertical;
+  background-color: var(--comp-input-bg, var(--sys-bg-surface));
+  color: var(--sys-text);
+  font-family: var(--pr-font-family-base);
+  font-size: var(--pr-fs-body);
+  line-height: var(--pr-lh-base);
+  padding: var(--comp-input-padding, var(--pr-space-sm) var(--pr-space-md));
+  border: var(--comp-input-border, 1px solid var(--sys-border));
+  border-radius: var(--comp-input-radius, var(--pr-radius-md));
+  transition:
+    border-color var(--pr-anim-fast),
+    box-shadow var(--pr-anim-fast);
+}
+
+.form-textarea::placeholder {
+  color: var(--sys-text-light);
+  opacity: 1;
+}
+
+.form-textarea:hover:not(:disabled):not([readonly]) {
+  border-color: var(--sys-text-muted);
+}
+
+.form-textarea:focus {
+  outline: none;
+  border-color: var(--sys-color-primary);
+  box-shadow: 0 0 0 3px var(--sys-focus-ring);
+}
+
+/* Disabled & Readonly States */
+.form-textarea:disabled {
+  opacity: var(--pr-opacity-disabled);
+  cursor: not-allowed;
+  background-color: var(--pr-color-neutral-100);
+  resize: none;
+}
+
+.form-textarea[readonly] {
+  background-color: var(--pr-color-neutral-50);
+  cursor: default;
+}
+
+/* BEM Modifier: Error State */
+.form-textarea--error {
+  border-color: var(--sys-color-danger) !important;
+}
+
+.form-textarea--error:focus {
+  box-shadow: 0 0 0 3px var(--pr-color-danger-subtle) !important;
+}
+
+/* Helper Texts: Hint & Error */
+.form-textarea__hint {
+  font-size: var(--pr-fs-caption);
+  color: var(--sys-text-muted);
+  line-height: var(--pr-lh-snug);
+}
+
+.form-textarea__error {
+  font-size: var(--pr-fs-caption);
+  font-weight: var(--pr-font-weight-semibold);
+  color: var(--sys-color-danger);
+  line-height: var(--pr-lh-snug);
+}
