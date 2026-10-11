@@ -1,0 +1,213 @@
+/* Main Card Shell */
+.search-card {
+  position: relative;
+  background-color: var(--comp-task-card-bg);
+  border: var(--pr-border-thin) solid var(--sys-border);
+  border-radius: var(--comp-task-card-radius);
+  padding: var(--comp-task-card-padding);
+  box-shadow: var(--comp-task-card-shadow);
+  transition:
+    border-color var(--pr-anim-fast),
+    box-shadow var(--pr-anim-fast),
+    background-color var(--pr-anim-fast);
+  cursor: pointer;
+}
+
+.search-card:hover {
+  border-color: var(--sys-color-primary);
+  box-shadow: var(--sys-shadow-md);
+}
+
+/* State: Completed */
+.search-card--completed {
+  background-color: var(--comp-task-card-completed-bg);
+  opacity: var(--pr-opacity-disabled);
+}
+
+/* Wrapper Layout */
+.search-card__body-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--pr-space-md);
+}
+
+/* Content Area */
+.search-card__main {
+  width: 100%;
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--pr-space-md);
+  padding-block: var(--pr-space-md);
+  border-block: 1px solid var(--sys-border);
+}
+
+.search-card__title {
+  font-size: var(--pr-fs-body);
+  text-align: center;
+  font-weight: var(--pr-font-weight-semibold);
+  color: var(--sys-text);
+  line-height: var(--pr-lh-subheading);
+  word-break: break-word;
+}
+
+.search-card__title--completed {
+  text-decoration: line-through;
+  color: var(--sys-text-muted);
+}
+
+.search-card__desc {
+  font-size: var(--pr-fs-small);
+  color: var(--sys-text-muted);
+  line-height: var(--pr-lh-base);
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Badges Container */
+.search-card__badges {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: var(--pr-space-3xs);
+}
+
+/* Actions Area */
+.search-card__actions {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  color: var(--sys-text-light);
+}
+
+/* Action Buttons Base Style */
+.search-card__btn,
+.search-card__action {
+  color: var(--sys-text-muted);
+  border-radius: var(--pr-radius-sm);
+  padding: var(--pr-space-3xs);
+  transition:
+    color var(--pr-anim-fast),
+    background-color var(--pr-anim-fast);
+}
+
+.search-card__btn:hover,
+.search-card__action:hover {
+  color: var(--sys-text);
+  background-color: var(--pr-color-hover-bg);
+}
+
+/* Favorite Active State */
+.search-card__btn--active {
+  color: var(--pr-color-warning-400);
+}
+
+/* Delete Button Hover State */
+.search-card__action--delete:hover {
+  color: var(--sys-color-danger);
+  background-color: var(--pr-color-danger-subtle);
+}
+
+.search-card__footer-badge {
+  display: none;
+}
+/* ==========================================================================
+   TABLET  (>= 768px)
+   ========================================================================== */
+
+@media (min-width: 768px) {
+  .search-card__body-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--pr-space-sm);
+  }
+
+  /* ផ្នែក Main Content */
+  .search-card__main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .search-card__title {
+    text-align: center;
+    font-size: var(--pr-fs-large);
+  }
+
+  .search-card__desc {
+    text-align: center;
+  }
+
+  .search-card__badges {
+    display: none;
+  }
+
+  .search-card__footer {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: var(--pr-space-sm);
+  }
+
+  .search-card__footer-badge {
+    display: flex;
+    align-items: center;
+    gap: var(--pr-space-sm);
+  }
+
+  .search-card__footer-actions {
+    /* width: auto; */
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: var(--pr-space-sm);
+  }
+}
+/* 3. Desktop Layout (>= 1024px) */
+@media (min-width: 1024px) {
+  .search-card__body-wrapper {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .search-card__main {
+    padding-inline: var(--pr-space-md);
+    align-items: start;
+    padding-block: 0;
+    border-block: none;
+    gap: var(--pr-space-xs);
+  }
+
+  .search-card__title {
+    text-align: left;
+    font-size: var(--pr-fs-large);
+  }
+
+  .search-card__desc {
+    text-align: left;
+  }
+
+  .search-card__badges {
+    display: flex;
+    justify-content: flex-start;
+    gap: var(--pr-space-xs);
+  }
+
+  .search-card__footer {
+    width: auto;
+  }
+  .search-card__footer-badge {
+    display: none;
+  }
+}

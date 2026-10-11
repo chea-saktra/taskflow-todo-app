@@ -1,0 +1,45 @@
+/* Main Container shell  */
+.search-results {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pr-space-md);
+  width: 100%;
+}
+
+/* Header Section  */
+.search-results__header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pr-space-xs);
+}
+
+.search-results__heading {
+  display: flex;
+  align-items: baseline;
+  gap: var(--pr-space-xs);
+}
+
+.search-results__title {
+  font-size: var(--pr-fs-large);
+  font-width: var(--pr-font-weight-semibold);
+  color: var(--sys-text);
+  line-height: var(--pr-lh-subheading);
+}
+
+.search-results__count {
+  font-size: var(--pr-fs-small);
+  color: var(--sys-text-muted);
+  margin: 0;
+}
+
+.search-results__query {
+  font-size: var(--pr-fs-small);
+  font-weight: var(--pr-font-weight-medium);
+  color: var(--sys-color-primary);
+}
+
+.search-results__list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--pr-space-md);
+}

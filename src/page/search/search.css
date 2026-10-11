@@ -1,0 +1,57 @@
+/* ==========================================================================
+   SEARCH PAGE CONTAINER STYLES
+   ========================================================================== */
+
+/* Main Page Container Shell */
+.search-page {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--pr-space-lg);
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding: var(--pr-space-md);
+  box-sizing: border-box;
+}
+
+/* Content Container Shell */
+.search-page__content {
+  position: relative;
+  width: 100%;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  transition: opacity var(--pr-anim-fast);
+}
+
+/* State: Loading Indicator Effect */
+.search-page__content--loading {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+/* Custom Empty State Centering inside Search Page */
+.search-page__content .empty-state {
+  margin: auto;
+  padding-block: var(--pr-space-2xl);
+}
+
+/* ==========================================================================
+   RESPONSIVE BREAKPOINTS (Tablet & Desktop)
+   ========================================================================== */
+
+/* Tablet Layout (>= 768px) */
+@media (min-width: 768px) {
+  .search-page {
+    padding: var(--pr-space-lg);
+    gap: var(--pr-space-xl);
+  }
+}
+
+/* Desktop Layout (>= 1024px) */
+@media (min-width: 1024px) {
+  .search-page {
+    padding: var(--pr-space-xl);
+  }
+}

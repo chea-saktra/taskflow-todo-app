@@ -1,0 +1,70 @@
+/* ==========================================================================
+   SEARCH FILTERS COMPONENT STYLES
+   ========================================================================== */
+
+.search-filters {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pr-space-xs);
+  width: 100%;
+}
+
+/* កំណត់ Styling លើ Select Element ទាំងអស់ក្នុង Filter Container */
+.search-filters select,
+.search-filters .select {
+  width: 100%;
+  padding: var(--pr-space-xs) var(--pr-space-sm);
+  font-size: var(--pr-fs-small);
+  color: var(--sys-text);
+  background-color: var(--comp-task-card-bg);
+  border: var(--pr-border-thin) solid var(--sys-border);
+  border-radius: var(--pr-radius-md);
+  outline: none;
+  cursor: pointer;
+  transition:
+    border-color var(--pr-anim-fast),
+    box-shadow var(--pr-anim-fast);
+}
+
+.search-filters select:hover,
+.search-filters .select:hover {
+  border-color: var(--sys-color-primary);
+}
+
+.search-filters select:focus,
+.search-filters .select:focus {
+  border-color: var(--sys-color-primary);
+  box-shadow: 0 0 0 3px var(--pr-color-primary-subtle, rgba(59, 130, 246, 0.15));
+}
+
+/* ==========================================================================
+   RESPONSIVE BREAKPOINTS (Tablet & Desktop Grid)
+   ========================================================================== */
+
+/* Tablet Layout (>= 768px) */
+@media (min-width: 768px) {
+  .search-filters {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--pr-space-sm);
+  }
+
+  .search-filters select,
+  .search-filters .select {
+    flex: 1;
+    min-width: 140px;
+  }
+}
+
+/* Desktop Layout (>= 1024px) */
+@media (min-width: 1024px) {
+  .search-filters {
+    justify-content: flex-end;
+    gap: var(--pr-space-md);
+  }
+
+  .search-filters select,
+  .search-filters .select {
+    max-width: 200px;
+  }
+}
