@@ -1,0 +1,116 @@
+.task-toolbar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pr-space-md);
+  width: 100%;
+}
+
+.task-toolbar__left {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pr-space-md);
+  width: 100%;
+}
+
+/* View Tab Filter  */
+.task-toolbar__views {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--pr-space-2xs);
+}
+
+.task-toolbar__view.btn {
+  color: var(--sys-text-muted);
+  border-radius: var(--pr-radius-md);
+  padding: var(--pr-space-xs) var(--pr-space-sm);
+  font-weight: var(--pr-font-weight-medium);
+  white-space: nowrap;
+}
+
+.task-toolbar__view.btn:hover {
+  color: var(--sys-text);
+  background-color: var(--pr-color-hover-bg);
+}
+
+.task-toolbar__view.btn.is-active {
+  color: var(--sys-color-primary);
+  background-color: var(--cat-work-bg);
+  font-weight: var(--pr-font-weight-semibold);
+}
+
+/* Sort Selector  */
+.task-toolbar__sort {
+  display: flex;
+  align-items: center;
+  gap: var(--pr-space-sm);
+  width: 100%;
+}
+
+.task-toolbar__sort-label {
+  font-size: var(--pr-fs-small);
+  color: var(--sys-text-muted);
+  font-weight: var(--pr-font-weight-medium);
+  white-space: nowrap;
+}
+
+/* Actions Section */
+.task-toolbar__actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--pr-space-xs);
+  width: 100%;
+  padding-top: var(--pr-space-xs);
+  border-top: 1px dashed var(--sys-border);
+}
+
+.task-toolbar__select-all {
+  display: inline-flex;
+  align-items: center;
+  margin-right: var(--pr-space-xs);
+  font-size: var(--pr-fs-small);
+  user-select: none;
+}
+
+.task-toolbar__selected-count {
+  font-size: var(--pr-fs-small);
+  font-weight: var(--pr-font-weight-semibold);
+  color: var(--sys-color-primary);
+  padding-inline: var(--pr-space-2xs);
+}
+
+.task-toolbar__action--danger.btn {
+  color: var(--sys-color-danger);
+}
+
+.task-toolbar__action--danger.btn:hover {
+  background-color: var(--pr-color-danger-subtle);
+}
+
+.task-toolbar__add {
+  margin-left: auto;
+}
+
+@media (min-width: 768px) {
+  .task-toolbar__sort {
+    width: auto;
+    min-width: 200px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .task-toolbar {
+    gap: var(--pr-space-lg);
+  }
+
+  .task-toolbar__left {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .task-toolbar__actions {
+    border-top: none;
+    padding-top: 0;
+  }
+}
