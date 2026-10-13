@@ -1,0 +1,26 @@
+.tasks-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pr-space-sm);
+  width: 100%;
+}
+
+/* Select All Section  */
+
+.tasks-list__select-all {
+  display: flex;
+  align-items: center;
+  padding-block: var(--pr-space-xs);
+  padding-inline: var(--pr-space-sm);
+  background-color: var(--sys-bg-surface-subtle);
+  border: 1px solid var(--sys-border);
+  border-radius: var(--pr-radius-md);
+  margin-bottom: var(--pr-space-xs);
+  user-select: none;
+}
+
+@media (min-width: 768px) {
+  .tasks-list {
+    gap: var(--pr-radius-md);
+  }
+}
