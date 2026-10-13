@@ -1,0 +1,77 @@
+.task-filters {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pr-space-md);
+  width: 100%;
+}
+
+/* Search Input Section  */
+.task-filters__search {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.task-filters__search-icon {
+  position: absolute;
+  left: var(--pr-space-sm);
+  display: flex;
+  align-items: center;
+  color: var(--sys-text-muted);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.task-filters__search input {
+  width: 100%;
+  padding-left: calc(var(--pr-space-sm) * 2 + 1rem);
+  background-color: var(--sys-bg-surface-subtle);
+}
+
+/* Select Controls Section  */
+.task-filters__selects {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--pr-space-xs);
+  width: 100%;
+}
+
+.task-filters__selects > * {
+  width: 100%;
+}
+
+.task-filters__reset {
+  width: 100%;
+  align-self: flex-start;
+  white-space: nowrap;
+}
+
+@media (min-width: 768px) {
+  .task-filters__selects {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .task-filters {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .task-filters__search {
+    flex: 1;
+    min-width: 200px;
+  }
+
+  .task-filters__selects {
+    width: auto;
+    flex: 2;
+  }
+
+  .task-filters__reset {
+    min-height: 3rem;
+    max-width: 22rem;
+    align-self: center;
+  }
+}
