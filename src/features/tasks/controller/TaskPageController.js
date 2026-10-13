@@ -1,9 +1,7 @@
-import { EmptyState } from "../../../components";
-import { TaskPage } from "../../../page/tasks/TaskPage";
+import { TaskPage } from "../../../page/tasks/Tasks";
 import { taskState } from "../../../state/TaskState";
 import { select } from "../../../utils";
 import { settingsService } from "../../settings/service/SettingsService";
-import { TaskList } from "../components/task-list/TaskList";
 import { enhanceTaskForUI } from "../config/taskConfig";
 import { taskService } from "../services/TaskService";
 import { TaskHandlers } from "./TaskHandler";
