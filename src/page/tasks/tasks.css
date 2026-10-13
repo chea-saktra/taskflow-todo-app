@@ -1,0 +1,42 @@
+.task-page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pr-space-md);
+  width: 100%;
+}
+/* Base Sections Layout  */
+.task-page__controls {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pr-space-md);
+  width: 100%;
+  padding: var(--pr-space-md);
+  background-color: var(--sys-bg-surface);
+  border: 1px solid var(--sys-border);
+  border-radius: var(--pr-radius-lg);
+  box-shadow: var(--sys-shadow-sm);
+}
+
+.task-page__controls-divider {
+  border: 0;
+  border-top: 1px solid var(--sys-divider);
+  margin: 0;
+  width: 100%;
+}
+
+.task-page__content {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  flex: 1;
+}
+
+@media (min-width: 768px) {
+  .task-page {
+    gap: var(--pr-space-lg);
+  }
+
+  .task-page__controls {
+    padding: var(--pr-space-lg);
+  }
+}
