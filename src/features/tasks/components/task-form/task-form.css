@@ -1,0 +1,58 @@
+.task-form:has(.modal__dialog) {
+  border-top-right-radius: var(--comp-modal-radius);
+  border-top-left-radius: var(--comp-modal-radius);
+}
+
+.task-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pr-space-md);
+  width: 100%;
+}
+
+.task-form__row {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pr-space-md);
+  width: 100%;
+}
+
+.task-form__actions {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: var(--pr-space-sm);
+  margin-top: var(--pr-space-sm);
+  padding-top: var(--pr-space-md);
+  border-top: 1px solid var(--sys-border);
+}
+
+.task-form__actions .btn {
+  width: 100%;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .task-form:has(.modal__dialog) {
+    border-bottom-right-radius: var(--comp-modal-radius);
+    border-bottom-left-radius: var(--comp-modal-radius);
+  }
+  .task-form__row {
+    flex-direction: row;
+    gap: var(--pr-space-md);
+  }
+
+  .task-form__row > * {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .task-form__actions {
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+
+  .task-form__actions .btn {
+    width: auto;
+    min-width: 120px;
+  }
+}
