@@ -1,0 +1,18 @@
+.task-modal__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pr-space-md);
+  width: 100%;
+  height: 100%;
+}
+
+.task-modal__body .task-detail,
+.task-modal__body .task-form {
+  flex: 1;
+  overflow-y: auto;
+  padding-inline-end: var(--pr-space-2xs);
+}
+.task-modal__body .task-detail::-webkit-scrollbar,
+.task-modal__body .task-form::-webkit-scrollbar {
+  width: 6px;
+}
