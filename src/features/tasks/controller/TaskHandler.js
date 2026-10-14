@@ -203,7 +203,6 @@ export class TaskHandlers {
       );
     }
 
-
     this.store.setEditingSubtaskId?.(null);
     const latestTask = taskId ? taskService.getById(taskId) : task;
     this.#updateModalTask(latestTask);
@@ -231,7 +230,7 @@ export class TaskHandlers {
     this.#executeBulkAction((ids) => taskService.completeMany(ids));
 
   handleArchiveSelected = () =>
-    this.#executeBulkAction((ids) => taskService.toggleArchive(ids));
+    this.#executeBulkAction((ids) => taskService.archiveMany(ids));
 
   handleDeleteSelected = () =>
     this.#executeBulkAction((ids) => taskService.deleteMany(ids));

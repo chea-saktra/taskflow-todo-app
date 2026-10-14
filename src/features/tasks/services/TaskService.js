@@ -175,6 +175,18 @@ class TaskService {
       "tasks completed",
     );
 
+  archiveMany = (ids = []) =>
+    this.#executeBulk(
+      ids,
+      (tasks, idSet) =>
+        tasks.map((task) =>
+          idSet.has(task.id)
+            ? taskFactory.update(task, { archived: true })
+            : task,
+        ),
+      "tasks archived",
+    );
+
   clearCompleted = () => {
     this.save(
       this.getAll().filter((task) => task.status !== TASK_STATUS.COMPLETED),
