@@ -1,12 +1,16 @@
-import { notificationService } from "../../../services";
+import { STORAGE_KEY } from "../../../constants";
+import { notificationService, StorageService } from "../../../services";
 import { taskState } from "../../../state";
 
 class ArchiveService {
+  save = (tasks = []) => (
+    taskState.setTasks(tasks),
+    StorageService.set(STORAGE_KEY.TASKS, taskState.getTasks())
+  );
+
   getTask(id) {
     const task = taskState.getTasks().find((t) => t.id === id);
-
     if (!task) notificationService.error("Task not found.");
-
     return task || null;
   }
 
@@ -64,7 +68,7 @@ class ArchiveService {
       .getTasks()
       .map((t) => (t.id === id ? updatedTask : t));
 
-    taskState.setTasks(updatedTasks);
+    this.save(updatedTasks);
     notificationService.success(successMsg);
 
     return updatedTask;
@@ -108,7 +112,7 @@ class ArchiveService {
           : task,
       );
 
-    taskState.setTasks(tasks);
+    this.save(tasks);
     notificationService.success(`${ids.length} tasks restored.`);
     return true;
   }
@@ -118,7 +122,7 @@ class ArchiveService {
     if (!task) return false;
 
     const remainingTasks = taskState.getTasks().filter((t) => t.id !== id);
-    taskState.setTasks(remainingTasks);
+    this.save(remainingTasks);
     notificationService.success("Task deleted premanently.");
     return true;
   }
@@ -129,7 +133,7 @@ class ArchiveService {
     const remainingTasks = taskState
       .getTasks()
       .filter((task) => !idSet.has(task.id));
-    taskState.setTasks(remainingTasks);
+    this.save(remainingTasks);
     notificationService.success(`${ids.length} tasks deleted permanently.`);
     return true;
   }
@@ -143,7 +147,7 @@ class ArchiveService {
       return false;
     }
 
-    taskState.setTasks(remainingTasks);
+    this.save(remainingTasks);
     notificationService.success("Archived tasks deleted.");
     return true;
   }
