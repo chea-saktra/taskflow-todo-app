@@ -1,0 +1,29 @@
+/* Main Content Container  */
+.archive-page__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pr-space-md);
+  width: 100%;
+}
+
+/* Header Count Badge  */
+.archive-page__count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--pr-space-3xs) var(--pr-space-sm);
+  background-color: var(--cat-work-bg);
+  color: var(--sys-color-primary);
+  font-size: var(--pr-fs-caption);
+  font-weight: var(--pr-font-weight-semibold);
+  border-radius: var(--pr-radius-full);
+  border: 1px solid var(--sys-outline);
+  line-height: var(--pr-lh-tight);
+}
+
+@media (min-width: 768px) {
+  .archive-page__count {
+    font-size: var(--pr-fs-small);
+    padding: var(--pr-space-2xs) var(--pr-space-sm);
+  }
+}
