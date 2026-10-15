@@ -2,12 +2,28 @@
 import { taskService } from "../services/TaskService";
 import { taskFactory } from "../services/TaskFactory";
 import { enhanceTaskForUI } from "../config/taskConfig";
+import { ConfirmModal } from "../../../components";
+import { settingsService } from "../../settings/service/SettingsService";
 
 export class TaskHandlers {
   constructor(stateStore, renderFn, updateListFn) {
     this.store = stateStore;
     this.render = renderFn;
     this.updateTaskList = updateListFn;
+  }
+
+  #showConfirmModal({ title, message, confirmText, onConfirm }) {
+    const modalEl = ConfirmModal({
+      title,
+      message,
+      confirmText,
+      onCancel: () => modalEl.remove(),
+      onConfirm: () => {
+        modalEl.remove();
+        onConfirm();
+      },
+    });
+    document.body.appendChild(modalEl);
   }
 
   #updateModalTask(task) {
@@ -141,9 +157,25 @@ export class TaskHandlers {
 
   handleDeleteTask = (taskId) => {
     if (!taskId) return;
-    if (taskService.delete(taskId)) {
-      this.store.deselect(taskId);
-      this.render();
+    const needsConfirmation = settingsService.shouldConfirmDelete();
+
+    const executeDelete = () => {
+      if (taskService.delete(taskId)) {
+        this.store.deselect(taskId);
+        this.render();
+      }
+    };
+
+    if (needsConfirmation) {
+      this.#showConfirmModal({
+        title: "Delete Task",
+        message:
+          "Are you sure you want to delete this task? This actions cannot be undone.",
+        confirmText: "Delete",
+        onConfirm: executeDelete,
+      });
+    } else {
+      executeDelete();
     }
   };
 
@@ -232,6 +264,28 @@ export class TaskHandlers {
   handleArchiveSelected = () =>
     this.#executeBulkAction((ids) => taskService.archiveMany(ids));
 
-  handleDeleteSelected = () =>
-    this.#executeBulkAction((ids) => taskService.deleteMany(ids));
+  handleDeleteSelected = () => {
+    const ids = this.store.selectedIds;
+    if (!ids.length) return;
+
+    const needsConfirmation = settingsService.shouldConfirmDelete();
+
+    const executeDeleteMany = () => {
+      if (taskService.deleteMany(ids)) {
+        this.store.clearSelection();
+        this.render();
+      }
+    };
+
+    if (needsConfirmation) {
+      this.#showConfirmModal({
+        title: "Delete selected Tasks",
+        message: `Are you sure you want to delete ${ids.length} selected tasks? This actions cannot be undone.`,
+        confirmText: `Delete (${ids.length})`,
+        onConfirm: executeDeleteMany,
+      });
+    } else {
+      executeDeleteMany();
+    }
+  };
 }

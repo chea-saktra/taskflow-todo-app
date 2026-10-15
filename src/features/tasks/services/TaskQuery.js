@@ -1,4 +1,5 @@
 import { TASK_STATUS } from "../../../constants";
+import { settingsService } from "../../settings/service/SettingsService";
 
 class TaskQuery {
   search(tasks = [], keyword = "") {
@@ -27,14 +28,15 @@ class TaskQuery {
       const priorityMatch =
         priority === "all" || !priority || task.priority === priority;
 
-      const statusMatch =
-        status === "all" || !status || task.status === status;
+      const statusMatch = status === "all" || !status || task.status === status;
 
       return categoryMatch && priorityMatch && statusMatch;
     });
   }
 
   byView(tasks = [], view = "all") {
+    const showCompleted = settingsService.shouldShowCompleted();
+
     switch (view) {
       case TASK_STATUS.TODO:
         return tasks.filter(
@@ -57,7 +59,13 @@ class TaskQuery {
 
       case "all":
       default:
-        return tasks.filter((task) => !task.archived);
+        return tasks.filter((task) => {
+          if (task.archived) return false;
+          if (!showCompleted && task.status === TASK_STATUS.COMPLETED) {
+            return false;
+          }
+          return true;
+        });
     }
   }
 
