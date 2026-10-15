@@ -1,5 +1,6 @@
 import { ArchivePage } from "../../../page/archive/Archive";
 import { taskState } from "../../../state";
+import { select } from "../../../utils";
 import { archiveService } from "../service/ArchiveService";
 import { ArchivedHandlers } from "./ArchiveHandlers";
 import { ArchiveStateStore } from "./ArchiveStateStore";
@@ -19,16 +20,11 @@ class ArchivePageController {
 
   mount = (container) => {
     this.container = container;
-    this.subscribe();
-    this.render();
-  };
-
-  subscribe = () => {
-    if (typeof taskState.subscribe !== "function") {
-      return;
+    if (typeof taskState.subscribe === "function") {
+      this.unsubscribe = taskState.subscribe(() => this.render());
     }
-
-    this.unsubscribe = taskState.subscribe(() => this.render());
+    this.render();
+    return this;
   };
 
   unmount = () => {
@@ -36,7 +32,6 @@ class ArchivePageController {
       this.unsubscribe();
       this.unsubscribe = null;
     }
-
     this.container = null;
   };
 
@@ -48,25 +43,8 @@ class ArchivePageController {
     );
   };
 
-  updateArchiveList = () => {
-    if (!this.container) return;
-
-    const archiveContent = this.container.querySelector(
-      ".archive-page__content",
-    );
-    if (!archiveContent) return;
-
+  getPageProps = () => {
     const tasks = this.getTasks();
-    const tempPage = ArchivePage(this.getPageProps(tasks));
-
-    const newContent = tempPage.querySelector(".archive-page__content");
-    if (newContent) {
-      archiveContent.replaceChildren(...newContent.childNodes);
-      window.lucide?.createIcons();
-    }
-  };
-
-  getPageProps = (tasks) => {
     return {
       tasks,
       search: this.store.searchQuery,
@@ -86,13 +64,24 @@ class ArchivePageController {
     };
   };
 
+  updateArchiveList = () => {
+    if (!this.container) return;
+
+    const contentEl = select(".archive-page__content", this.container);
+    if (!contentEl) return;
+
+    const tempPage = ArchivePage(this.getPageProps());
+    const newContent = select(".archive-page__content", tempPage);
+    if (newContent) {
+      contentEl.replaceChildren(...newContent.childNodes);
+      window.lucide?.createIcons();
+    }
+  };
+
   render = () => {
     if (!this.container) return;
 
-    const tasks = this.getTasks();
-    const pageProps = this.getPageProps(tasks);
-    const page = ArchivePage(pageProps);
-
+    const page = ArchivePage(this.getPageProps());
     this.container.replaceChildren(page);
     window.lucide?.createIcons();
   };
