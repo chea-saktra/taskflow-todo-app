@@ -116,8 +116,8 @@ BUTTON VARIANTS
 
 /* Danger Variant */
 .btn--danger {
-  background-color: var(--sys-color-danger);
   color: var(--pr-color-white);
+  background-color: var(--sys-color-danger);
 }
 
 .btn--danger:hover:not(:disabled):not(.is-disabled) {
