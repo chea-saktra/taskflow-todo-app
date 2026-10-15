@@ -1,0 +1,39 @@
+/* Settings Appearance Block  */
+.settings-appearance {
+  width: 100%;
+  overflow: visible;
+}
+
+/* Header Section Customization */
+.settings-appearance__heading {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pr-space-3xs);
+}
+
+.settings-appearance__title {
+  font-size: var(--pr-fs-h3);
+  font-weight: var(--pr-font-weight-semibold);
+  color: var(--sys-text);
+  line-height: var(--pr-lh-heading);
+}
+
+.settings-appearance__subtitle {
+  font-size: var(--pr-fs-small);
+  color: var(--sys-text-muted);
+  line-height: var(--pr-lh-base);
+}
+
+.settings-appearance__body {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--pr-space-md);
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .settings-appearance__body {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--pr-space-lg);
+  }
+}

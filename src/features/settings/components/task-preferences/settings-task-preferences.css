@@ -1,0 +1,49 @@
+/* Settings Task Preferences Block  */
+.settings-task-preferences {
+  width: 100%;
+  overflow: visible;
+}
+
+/* Header Section  */
+.settings-task-preferences__heading {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pr-space-3xs);
+}
+
+.settings-task-preferences__title {
+  font-size: var(--pr-fs-h3);
+  font-weight: var(--pr-font-weight-semibold);
+  color: var(--sys-text);
+  line-height: var(--pr-lh-heading);
+}
+
+.settings-task-preferences__subtitle {
+  font-size: var(--pr-fs-small);
+  color: var(--sys-text-muted);
+  line-height: var(--pr-lh-base);
+}
+
+/* Form Body Loyout Grid  */
+
+.settings-task-preferences__body {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--pr-space-md);
+  padding-block: var(--pr-space-2xs);
+}
+
+@media (min-width: 768px) {
+  .settings-task-preferences__body {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .settings-task-preferences__body > :nth-child(5) {
+    grid-column: 1 / -1;
+  }
+}
+
+.settings-task-preferences__body > .switch {
+  padding-top: var(--pr-space-xs);
+  border-top: 1px solid var(--sys-divider);
+}

@@ -1,0 +1,85 @@
+/* Settings Data Management Block */
+.settings-data-management {
+  width: 100%;
+}
+
+/* Header Section Customization */
+.settings-data-management__heading {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pr-space-3xs);
+}
+
+.settings-data-management__title {
+  font-size: var(--pr-fs-h3);
+  font-weight: var(--pr-font-weight-semibold);
+  color: var(--sys-text);
+  line-height: var(--pr-lh-heading);
+}
+
+.settings-data-management__subtitle {
+  font-size: var(--pr-fs-small);
+  color: var(--sys-text-muted);
+  line-height: var(--pr-lh-base);
+}
+
+/* Body Content Section */
+.settings-data-management__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pr-space-md);
+  width: 100%;
+}
+
+/* Action Row Item Structure  */
+.settings-data-management__action {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--pr-space-sm);
+  padding-bottom: var(--pr-space-md);
+  border-bottom: 1px solid var(--sys-divider);
+}
+
+.settings-data-management__action:last-of-type {
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+/* Action Info Area */
+.settings-data-management__action-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pr-space-3xs);
+  flex: 1;
+}
+
+.settings-data-management__action-title {
+  font-size: var(--pr-fs-body);
+  font-weight: var(--pr-font-weight-semibold);
+  color: var(--sys-text);
+  line-height: var(--pr-lh-subheading);
+}
+
+.settings-data-management__action-description {
+  font-size: var(--pr-fs-small);
+  color: var(--sys-text-muted);
+  line-height: var(--pr-lh-base);
+}
+
+.settings-data-management__action .btn {
+  flex-shrink: 0;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .settings-data-management__action {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .settings-data-management__action .btn {
+    width: auto;
+  }
+}
