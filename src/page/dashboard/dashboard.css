@@ -71,18 +71,6 @@
     gap: var(--pr-space-lg);
   }
 
-  .dashboard-grid > *:nth-child(3),
-  .dashboard-grid__span-2,
-  .dashboard-grid__full {
-    grid-column: 1 / -1;
-  }
-}
-
-@media (min-width: 1200px) {
-  .dashboard-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
   .dashboard-grid__full {
     grid-column: 1 / -1;
   }
@@ -90,9 +78,5 @@
   .dashboard-grid__span-2 {
     grid-column: span 2;
   }
-
-  .dashboard-grid > *:nth-child(3),
-  .dashboard-grid__span-1 {
-    grid-column: span 1;
-  }
 }
+

@@ -1,18 +1,14 @@
 import "./dashboard.css";
-import { DashboardOverdue } from "../../features/dashboard/components/dashboard-overdue/DashboardOverdue";
 import { DashboardOverview } from "../../features/dashboard/components/dashboard-overview/DashboardOverview";
 import { DashboardProductibity } from "../../features/dashboard/components/dashboard-productivity/DashboardProductivity";
-import { DashboardProgress } from "../../features/dashboard/components/dashboard-progress/DashboardProgress";
-import { DashboardRecent } from "../../features/dashboard/components/dashboard-recent/DashboardRecent";
 import { DashboardStatistics } from "../../features/dashboard/components/dashboard-statistics/DashboardStatistics";
-import { DashboardUpcoming } from "../../features/dashboard/components/dashboard-upcoming/DashboardUpcoming";
 import { Page, PageContent, PageHeader } from "../../layouts";
 import { Button } from "../../components";
 import { createElement } from "../../utils";
+import { DashbaordTaskList } from "../../features/dashboard/components/dashboard-task-list/DashboardTaskList";
 
 export const DashboardPage = ({
   overview,
-  progress,
   status,
   priority,
 
@@ -28,7 +24,6 @@ export const DashboardPage = ({
   onRefresh,
   onTaskClick,
   onCreateTask,
-  onViewAllTasks,
 } = {}) => {
   return Page({
     header: PageHeader({
@@ -68,17 +63,9 @@ export const DashboardPage = ({
                 }),
               ],
             }),
-            createElement("div", {
-              className: "dashboard-grid__span-2",
-              children: [
-                DashboardProgress({
-                  ...progress,
-                }),
-              ],
-            }),
 
             createElement("div", {
-              className: "dashboard-grid__span-1",
+              className: "dashboard-grid__full",
               children: [
                 DashboardStatistics({
                   status,
@@ -100,10 +87,17 @@ export const DashboardPage = ({
             createElement("div", {
               className: "dashboard-grid__span-1",
               children: [
-                DashboardUpcoming({
-                  tasks: upcoming,
-                  onTaskClick,
-                  onViewAll: () => onViewAllTasks?.("upcoming"),
+                DashbaordTaskList({
+                  title: "Favorite Tasks",
+                  description: "Your bookmarked or starred tasks.",
+                  items: favorites,
+                  variant: "favorites",
+                  onItemClick: onTaskClick,
+                  emptyState: {
+                    icon: "star",
+                    title: "No favorite tasks",
+                    description: "You have on favorite tasks.",
+                  },
                 }),
               ],
             }),
@@ -111,10 +105,17 @@ export const DashboardPage = ({
             createElement("div", {
               className: "dashboard-grid__span-1",
               children: [
-                DashboardOverdue({
-                  tasks: overdue,
-                  onTaskClick,
-                  onViewAll: () => onViewAllTasks?.("overdue"),
+                DashbaordTaskList({
+                  title: "Upcoming Tasks",
+                  description: "Tasks that are coming up next.",
+                  items: upcoming,
+                  variant: "upcoming",
+                  onItemClick: onTaskClick,
+                  emptyState: {
+                    icon: "calendar",
+                    title: "No upcoming tasks",
+                    description: "You don't have any upcoming tasks.",
+                  },
                 }),
               ],
             }),
@@ -122,10 +123,53 @@ export const DashboardPage = ({
             createElement("div", {
               className: "dashboard-grid__span-1",
               children: [
-                DashboardRecent({
-                  tasks: recent,
-                  onTaskClick,
-                  onViewAll: () => onViewAllTasks?.("recent"),
+                DashbaordTaskList({
+                  title: "Overdue Tasks",
+                  description: "Tasks that have passed their due date.",
+                  items: overdue,
+                  variant: "overdue",
+                  onItemClick: onTaskClick,
+                  emptyState: {
+                    icon: "check-circle",
+                    title: "No overdue tasks",
+                    description: "You're all caught up.",
+                  },
+                }),
+              ],
+            }),
+
+            createElement("div", {
+              className: "dashboard-grid__span-1",
+              children: [
+                DashbaordTaskList({
+                  title: "Recent Tasks",
+                  description: "Your recently created or updated tasks.",
+                  items: recent,
+                  variant: "recent",
+                  onItemClick: onTaskClick,
+                  emptyState: {
+                    icon: "clock",
+                    title: "No recent tasks",
+                    description: "There are no recent tasks to display.",
+                  },
+                }),
+              ],
+            }),
+
+            createElement("div", {
+              className: "dashboard-grid__full",
+              children: [
+                DashbaordTaskList({
+                  title: "Recent Activity",
+                  description: "Latest updates on your tasks.",
+                  items: activity,
+                  variant: "activity",
+                  onItemClick: onTaskClick,
+                  emptyState: {
+                    icon: "activity",
+                    title: "No recent activity",
+                    description: "There is no recent activity to display",
+                  },
                 }),
               ],
             }),
