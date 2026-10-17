@@ -38,24 +38,29 @@
   transform: scale(0.98);
 }
 
-/* ==========================================================================
-   Base Selected State
-   ========================================================================== */
+/* Base Selected State */
 
 .chip--selected {
-  background-color: var(--pr-color-primary-50);
+  background-color: color-mix(
+    in srgb,
+    var(--sys-color-primary) 12%,
+    transparent
+  );
   color: var(--sys-color-primary);
-  border-color: var(--pr-color-primary-300);
+  border-color: var(--sys-color-primary);
 }
 
-/* ==========================================================================
-   Category & ID Dynamic Color Tokens (Light & Dark Support)
-   ========================================================================== */
+/* Category & ID Dynamic Color Tokens (Light & Dark Support) */
+
 .chip--selected[data-id="today"],
 .chip--selected[data-id="work"] {
-  background-color: var(--cat-work-bg);
-  color: var(--cat-work-text);
-  border-color: var(--cat-work-color);
+  background-color: color-mix(
+    in srgb,
+    var(--cat-work-color, var(--sys-color-primary)) 12%,
+    transparent
+  );
+  color: var(--cat-work-color, var(--sys-color-primary));
+  border-color: var(--cat-work-color, var(--sys-color-primary));
 }
 
 .chip--selected[data-id="low"],
@@ -92,7 +97,11 @@
 }
 
 .chip--selected[data-id="in-progress"] {
-  background-color: var(--pr-color-primary-100);
-  color: var(--pr-color-primary-700);
-  border-color: var(--pr-color-primary-400);
+  background-color: color-mix(
+    in srgb,
+    var(--sys-color-primary) 15%,
+    transparent
+  );
+  color: var(--sys-color-primary);
+  border-color: var(--sys-color-primary);
 }
