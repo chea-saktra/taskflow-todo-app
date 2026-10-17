@@ -43,19 +43,6 @@ class DashboardStatistics {
     };
   }
 
-  getProgress() {
-    const { total, todo, inProgress, archived, completed } = this.getOverview();
-
-    return {
-      total,
-      todo,
-      inProgress,
-      archived,
-      completed,
-      percentage: total > 0 ? Math.round((completed / total) * 100) : 0,
-    };
-  }
-
   getStatus() {
     const tasks = this.getAllTasks();
 

@@ -3,13 +3,8 @@ import { dashboardStatistics } from "./DashboardStatistics";
 import { dashboardTasks } from "./DashboardTasks";
 
 class DashboardService {
-  
   getOverview() {
     return dashboardStatistics.getOverview();
-  }
-
-  getProgress() {
-    return dashboardStatistics.getProgress();
   }
 
   getStatus() {
@@ -51,7 +46,6 @@ class DashboardService {
   getDashboardData() {
     return {
       overview: this.getOverview(),
-      progress: this.getProgress(),
       status: this.getStatus(),
       priority: this.getPriority(),
       category: this.getCategory(),
