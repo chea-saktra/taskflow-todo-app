@@ -1,7 +1,7 @@
 .dashboard-statistics {
   display: flex;
   flex-direction: column;
-  gap: var(--pr-space-md);
+  gap: var(--pr-space-sm);
   width: 100%;
 }
 
@@ -29,16 +29,16 @@
 /* Statistics Grid Section  */
 .dashboard-statistics__grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: var(--pr-space-md);
+  grid-template-columns: 1fr;
+  gap: var(--pr-space-sm);
   width: 100%;
 }
 
 .dashboard-statistics__card {
   display: flex;
   flex-direction: column;
-  gap: var(--pr-space-sm);
-  padding: var(--pr-space-md);
+  gap: var(--pr-space-xs);
+  padding: var(--pr-space-sm) var(--pr-space-md);
 }
 
 .dashboard-statistics__card-header {
@@ -68,4 +68,20 @@
   font-size: var(--pr-fs-body);
   font-weight: var(--pr-font-weight-bold);
   color: var(--sys-text);
+}
+
+@media (min-width: 768px) {
+  .dashboard-statistics {
+    gap: var(--pr-space-md);
+  }
+
+  .dashboard-statistics__grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--pr-space-md);
+  }
+
+  .dashboard-statistics__card{
+    padding: var(--pr-space-md);
+    gap: var(--pr-space-sm);
+  }
 }

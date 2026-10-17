@@ -1,7 +1,7 @@
 .dashboard-overview {
   display: flex;
   flex-direction: column;
-  gap: var(--pr-space-md);
+  gap: var(--pr-space-sm);
   width: 100%;
 }
 
@@ -29,20 +29,25 @@
 /* Cards Responsive Grid  */
 .dashboard-overview__grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: var(--pr-space-md);
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--pr-space-sm);
   width: 100%;
 }
 
-/* @media (min-width: 576px) {
+@media (min-width: 768px) {
+  .dashboard-overview {
+    gap: var(--pr-space-md);
+  }
+
   .dashboard-overview__grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--pr-space-md);
   }
 }
 
 @media (min-width: 1024px) {
   .dashboard-overview__grid {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     gap: var(--pr-space-lg);
   }
-} */
+}
