@@ -15,12 +15,6 @@ export class DashboardStateStore {
         archived: 0,
       },
 
-      progress: {
-        total: 0,
-        completed: 0,
-        percentage: 0,
-      },
-
       status: {},
       priority: {},
       category: {},

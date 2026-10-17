@@ -33,19 +33,6 @@ class DashboardPageController {
           taskPageController.handlers?.handleOpenCreateModal();
         }, 100);
       },
-
-      onViewAllTasks: (view) => {
-        if (typeof this.onViewAllTasks === "function") {
-          this.onViewAllTasks(view);
-          return;
-        }
-        routerService.navigate("tasks");
-        if (view) {
-          setTimeout(() => {
-            taskPageController.handlers?.handleViewChange(view);
-          }, 100);
-        }
-      },
     });
   }
 
@@ -55,7 +42,6 @@ class DashboardPageController {
 
     this.onTaskClick = navigationCallbacks.onTaskClick;
     this.onCreateTask = navigationCallbacks.onCreateTask;
-    this.onViewAllTasks = navigationCallbacks.onViewAllTasks;
 
     this.subscribe();
     this.load();
@@ -96,7 +82,6 @@ class DashboardPageController {
       onRefresh: this.handlers.handleRefresh,
       onTaskClick: this.handlers.handleTaskClick,
       onCreateTask: this.handlers.handleCreateTask,
-      onViewAllTasks: this.handlers.handleViewAllTasks,
     });
 
     this.container.replaceChildren(page);

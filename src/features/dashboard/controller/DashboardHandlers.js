@@ -17,8 +17,4 @@ export class DashboardHandlers {
   handleCreateTask = () => {
     this.navigation.onCreateTask?.();
   };
-
-  handleViewAllTasks = (view = "all") => {
-    this.navigation.onViewAllTasks?.(view);
-  };
 }
