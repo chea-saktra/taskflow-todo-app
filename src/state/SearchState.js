@@ -4,21 +4,41 @@ class SearchState extends BaseState {
   constructor() {
     super();
     this.query = "";
+    this.results = [];
+  }
+
+  setQuery(query = "") {
+    this.query = query;
+    this.notify(this.getState());
   }
 
   getQuery() {
     return this.query;
   }
 
-  setQuery(query = "") {
-    const value = query.trim().toLowerCase();
-    if (this.query === value) return;
-    this.query = value;
-    this.notify(this.query);
+  setResults(results) {
+    this.results = [...results];
+    this.notify(this.getState());
   }
 
-  clear() {
-    this.setQuery("");
+  getResults() {
+    return [...this.results];
+  }
+
+  getState() {
+    return {
+      query: this.query,
+      results: [...this.results],
+      isLoading: this.isLoading,
+      error: this.error,
+    };
+  }
+
+  reset() {
+    this.query = "";
+    this.results = [];
+
+    this.notify(this.getState());
   }
 }
 
