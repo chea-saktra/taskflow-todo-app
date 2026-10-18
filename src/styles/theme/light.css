@@ -11,6 +11,7 @@
   /* System Colors */
   --sys-bg: var(--pr-color-neutral-50);
   --sys-bg-surface: var(--pr-color-white);
+  --sys-bg-surface-subtle: var(--pr-color-neutral-100);
   --sys-bg-card: var(--pr-color-white);
   --sys-border: var(--pr-color-neutral-200);
 
@@ -18,6 +19,7 @@
   --sys-text-muted: var(--pr-color-neutral-500);
   --sys-text-light: var(--pr-color-neutral-400);
 
+  --sys-color: var(--pr-color-white);
   --sys-color-primary: var(--pr-color-primary-500);
   --sys-color-primary-hover: var(--pr-color-primary-600);
   --sys-color-success: var(--pr-color-success-500);

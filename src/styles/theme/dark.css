@@ -10,6 +10,7 @@
   /* System Colors */
   --sys-bg: var(--pr-color-dark-bg);
   --sys-bg-surface: var(--pr-color-dark-surface);
+  --sys-bg-surface-subtle: var(--pr-color-dark-elevated);
   --sys-bg-card: var(--pr-color-dark-surface);
   --sys-border: var(--pr-color-dark-border);
 
