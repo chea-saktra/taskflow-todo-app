@@ -5,29 +5,16 @@
   height: 100%;
   padding: var(--pr-space-md);
   background-color: var(--sys-bg-surface);
+  border-right: 1px solid var(--sys-border);
   overflow-y: auto;
-}
-
-.app-sidebar__header {
-  display: none;
-}
-
-.app-sidebar__logo-icon {
-  width: 1.75rem;
-  height: 1.75rem;
-  stroke-width: 2.5;
-}
-
-.app-sidebar__logo-text {
-  font-size: var(--pr-fs-h2);
-  font-weight: var(--pr-font-weight-bold);
-  color: var(--sys-text);
+  overflow-x: hidden;
+  transition: width var(--pr-anim-fast);
 }
 
 .app-sidebar__nav {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: var(--pr-space-xs);
 }
 
 .app-sidebar__item {
@@ -44,70 +31,113 @@
   transition:
     background-color var(--pr-anim-fast),
     color var(--pr-anim-fast);
+  white-space: nowrap;
 }
 
 .app-sidebar__item svg {
   width: 1.25rem;
   height: 1.25rem;
   color: inherit;
-}
-
-.app-sidebar__item:hover {
-  letter-spacing: 0.05em;
-}
-
-.app-sidebar__item--active,
-.app-sidebar__item--active:hover svg,
-.app-sidebar__item:hover svg,
-.app-sidebar__item:hover {
-  background-color: var(--pr-color-neutral-100);
-  color: var(--sys-color-primary);
-}
-
-.app-sidebar__title {
-  font-size: var(--pr-fs-caption);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--sys-text-muted);
-  padding-left: var(--pr-space-xs);
-}
-
-.app-sidebar__divider {
-  border: 0;
-  border-top: 1px solid var(--sys-border);
-  margin-block: var(--pr-space-sm);
-}
-
-.app-sidebar__dot {
-  width: 8px;
-  height: 8px;
-  border-radius: var(--pr-radius-full);
   flex-shrink: 0;
 }
 
-.app-sidebar__dot--blue {
-  background-color: var(--cat-work-color);
-}
-.app-sidebar__dot--green {
-  background-color: var(--cat-study-color);
-}
-.app-sidebar__dot--purple {
-  background-color: var(--cat-personal-color);
-}
-.app-sidebar__dot--orange {
-  background-color: var(--cat-shopping-color);
+.app-sidebar__item:hover {
+  background-color: var(--pr-color-hover-bg);
+  color: var(--sys-text);
 }
 
+.app-sidebar__item--active,
+.app-sidebar__item--active:hover {
+  background-color: var(--cat-work-bg);
+  color: var(--sys-color-primary);
+  font-weight: var(--pr-font-weight-bold);
+}
+
+/* --- Modern Sidebar Footer Style --- */
 .app-sidebar__footer {
   margin-top: auto;
-  padding-top: var(--pr-space-sm);
+  padding-top: var(--pr-space-md);
+  border-top: 1px solid var(--sys-border);
 }
 
-@media (min-width: 768px) {
-  .app-sidebar__header {
-    display: flex;
+.app-sidebar__profile-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 8px 10px;
+  border-radius: var(--pr-radius-md);
+  background-color: var(--sys-bg-surface-subtle, transparent);
+  border: 1px solid transparent;
+  transition: all var(--pr-anim-fast);
+  cursor: pointer;
+}
+
+.app-sidebar__profile-card:hover {
+  background-color: var(--pr-color-neutral-100);
+  border-color: var(--sys-border);
+}
+
+.app-sidebar__profile-main {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.app-sidebar__user-info {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.app-sidebar__user-name {
+  font-weight: var(--pr-font-weight-semibold);
+  font-size: var(--pr-fs-small);
+  color: var(--sys-text);
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.app-sidebar__user-plan {
+  font-size: var(--pr-fs-caption);
+  color: var(--sys-text-muted);
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.app-sidebar__profile-action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--sys-text-muted);
+  padding: 4px;
+  border-radius: var(--pr-radius-sm);
+  transition: color var(--pr-anim-fast);
+}
+
+.app-sidebar__profile-card:hover .app-sidebar__profile-action {
+  color: var(--sys-text);
+}
+
+/* TABLET COLLAPSED STATE (768px - 1023px) */
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .app-shell__sidebar:not(.is-open) .app-sidebar {
+    padding: var(--pr-space-sm) var(--pr-space-2xs);
     align-items: center;
-    gap: var(--pr-space-xs);
-    color: var(--sys-color-primary);
+  }
+
+  .app-shell__sidebar:not(.is-open) .app-sidebar__item-label,
+  .app-shell__sidebar:not(.is-open) .app-sidebar__user-info,
+  .app-shell__sidebar:not(.is-open) .app-sidebar__profile-action {
+    display: none;
+  }
+
+  .app-shell__sidebar:not(.is-open) .app-sidebar__item,
+  .app-shell__sidebar:not(.is-open) .app-sidebar__profile-card {
+    justify-content: center;
+    padding: 8px;
   }
 }
