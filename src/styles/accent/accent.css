@@ -1,0 +1,31 @@
+/* Blue (Default) */
+html[data-accent="blue"] {
+  --sys-color-primary: #3b82f6;
+  --sys-color-primary-hover: #2563eb;
+  --sys-focus-ring: rgba(59, 130, 246, 0.35);
+  --cat-work-color: #3b82f6;
+}
+
+/* Green */
+html[data-accent="green"] {
+  --sys-color-primary: #22c55e;
+  --sys-color-primary-hover: #16a34a;
+  --sys-focus-ring: rgba(34, 197, 94, 0.35);
+  --cat-work-color: #22c55e;
+}
+
+/* Purple */
+html[data-accent="purple"] {
+  --sys-color-primary: #a855f7;
+  --sys-color-primary-hover: #9333ea;
+  --sys-focus-ring: rgba(168, 85, 247, 0.35);
+  --cat-work-color: #a855f7;
+}
+
+/* Orange */
+html[data-accent="orange"] {
+  --sys-color-primary: #f97316;
+  --sys-color-primary-hover: #ea580c;
+  --sys-focus-ring: rgba(249, 115, 22, 0.35);
+  --cat-work-color: #f97316;
+}
