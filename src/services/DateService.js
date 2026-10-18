@@ -25,7 +25,7 @@ class DateService {
     if (!date) return "";
     const value = new Date(date);
 
-    if (Number.isNaN(value.getTime())) return;
+    if (Number.isNaN(value.getTime())) return "";
 
     return new Intl.DateTimeFormat(locale, {
       day: "numeric",
@@ -91,7 +91,7 @@ class DateService {
 
     const diff = end.getTime() - start.getTime();
 
-    return Math.floor(diff / 864000000);
+    return Math.floor(diff / 86400000);
   }
 
   addDays(date, amount) {

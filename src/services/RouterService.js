@@ -1,6 +1,11 @@
 class RouterService {
-  navigate(hash) {
-    window.location.hash = hash;
+  navigate(route) {
+    const cleanRoute = route.replace(/^#/, "");
+    const path =
+      cleanRoute === "dashboard" || cleanRoute === "" ? "/" : `/${cleanRoute}`;
+    if (window.location.pathname === path) return;
+    window.history.pushState({}, "", path);
+    window.dispatchEvent(new Event("popstate"));
   }
 
   back() {
@@ -12,13 +17,18 @@ class RouterService {
   }
 
   getCurrentRoute() {
-    return window.location.hash.replace("#", "") || "dashboard";
+    const path = window.location.pathname.replace(/^\//, "");
+    return path || "dashboard";
   }
 
   onChange(callback) {
-    window.addEventListener("hashchange", () => {
+    const handleChange = () => {
       callback(this.getCurrentRoute());
-    });
+    };
+
+    window.addEventListener("popstate", handleChange);
+
+    return () => window.removeEventListener("popstate", handleChange);
   }
 }
 

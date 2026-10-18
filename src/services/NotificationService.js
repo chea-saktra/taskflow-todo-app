@@ -1,29 +1,45 @@
+import { notificationState } from "../state/NotificationState";
+
 class NotificationService {
-  success(message) {
-    this.show(message, "success");
+  show(message, type = "info", duration = 3000) {
+    this.clear();
+    const id = notificationState.add({
+      message,
+      type,
+      duration,
+    });
+
+    if (duration > 0) {
+      setTimeout(() => {
+        notificationState.remove(id);
+      }, duration);
+    }
+
+    return id;
   }
 
-  error(message) {
-    this.show(message, "error");
+  success(message, duration = 3000) {
+    return this.show(message, "success", duration);
   }
 
-  warning(message) {
-    this.show(message, "warning");
+  error(message, duration = 4000) {
+    this.show(message, "error", duration);
   }
 
-  info(message) {
-    this.show(message, "info");
+  warning(message, duration = 3500) {
+    this.show(message, "warning", duration);
   }
 
-  show(message, type = "info") {
-    document.dispatchEvent(
-      new CustomEvent("toast:show", {
-        detail: {
-          message,
-          type,
-        },
-      }),
-    );
+  info(message, duration = 3000) {
+    this.show(message, "info", duration);
+  }
+
+  remove(id) {
+    notificationState.remove(id);
+  }
+
+  clear() {
+    notificationState.clear();
   }
 }
 
