@@ -6,64 +6,87 @@ export function selectAll(selector, parent = document) {
   return [...parent.querySelectorAll(selector)];
 }
 
-export function createElement(tagName, options = {}) {
-  const svgTags = [
-    "svg",
-    "circle",
-    "path",
-    "rect",
-    "line",
-    "g",
-    "polygon",
-    "polyline",
-  ];
+const SVG_TAGS = new Set([
+  "svg",
+  "circle",
+  "path",
+  "rect",
+  "line",
+  "g",
+  "polygon",
+  "polyline",
+]);
 
-  let element;
-  if (svgTags.includes(tagName.toLowerCase())) {
-    element = document.createElementNS("http://www.w3.org/2000/svg", tagName);
-  } else {
-    element = document.createElement(tagName);
-  }
+export function createElement(tag, options = {}) {
+  const isSvg = SVG_TAGS.has(tag.toLowerCase());
+  const el = isSvg
+    ? document.createElementNS("http://www.w3.org/2000/svg", tag)
+    : document.createElement(tag);
 
-  if (options.className) {
-    element.className = options.className;
-  }
+  const {
+    className,
+    textContent,
+    innerHTML,
+    attributes,
+    events,
+    children,
+    ...rest
+  } = options;
 
-  if (options.textContent !== undefined) {
-    element.textContent = options.textContent;
-  } else if (options.innerHTML !== undefined) {
-    element.innerHTML = options.innerHTML;
-  }
+  if (className) el.className = className;
+  if (textContent !== undefined) el.textContent = textContent;
+  if (innerHTML !== undefined) el.innerHTML = innerHTML;
 
-  if (options.attributes) {
-    Object.entries(options.attributes).forEach(([key, value]) => {
-      if (value !== null && value !== undefined && value !== false) {
-        element.setAttribute(key, String(value));
-      }
+  if (attributes) {
+    Object.entries(attributes).forEach(([key, value]) => {
+      if (value !== null && value !== false)
+        el.setAttribute(
+          key,
+          typeof value === "object" ? value.name || value.icon : value,
+        );
     });
   }
 
-  if (options.events) {
-    Object.entries(options.events).forEach(([eventName, handler]) => {
-      if (typeof handler === "function") {
-        element.addEventListener(eventName, handler);
-      }
-    });
+  if (events) {
+    Object.entries(events).forEach(
+      ([eventName, handler]) =>
+        typeof handler === "function" &&
+        el.addEventListener(eventName, handler),
+    );
   }
 
-  if (options.children) {
-    const childrenArray = Array.isArray(options.children)
-      ? options.children
-      : [options.children];
+  Object.entries(rest).forEach(([key, value]) => {
+    if (value == null || value === false) return;
+    if (key.startsWith("on") && typeof value === "function") {
+      const eventName = key.toLowerCase().substring(2);
+      el.addEventListener(eventName, value);
+    } else if (key in el && !isSvg) {
+      try {
+        el[key] = value;
+      } catch (e) {
+        el.setAttribute(key, value);
+      }
+    } else {
+      el.setAttribute(
+        key,
+        typeof value === "object" ? value.name || value.icon : value,
+      );
+    }
+  });
+
+  if (children) {
+    const childrenArray = Array.isArray(children) ? children : [children];
 
     childrenArray.forEach((child) => {
       if (child instanceof Node) {
-        element.append(child);
+        el.append(child);
+      } else if (child !== null && child !== undefined && child !== false) {
+        el.append(document.createTextNode(String(child)));
       }
     });
   }
 
-  return element;
+  return el;
 }
 
 export function renderSlot(targetElement, content) {
@@ -84,8 +107,8 @@ export function renderSlot(targetElement, content) {
   }
 }
 
-export function clearElement(element) {
-  while (element.firstChild) {
-    element.firstChild.remove();
+export function clearElement(el) {
+  while (el.firstChild) {
+    el.firstChild.remove();
   }
 }

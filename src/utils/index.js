@@ -3,3 +3,4 @@ export * from "./string.js";
 export * from "./classnames.js";
 export * from "./html.js";
 export * from "./uuid.js";
+export * from "./uiEvents.js";
