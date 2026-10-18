@@ -47,6 +47,7 @@ taskflow-todo-app/
 ├── package-lock.json # Locked versions of installed npm dependencies
 ├── package.json      # Project dependencies, scripts, and configuration
 └── README.md         # Project documentation
+
 ---
 
 ## 🚀 Getting Started
