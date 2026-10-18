@@ -1,5 +1,6 @@
 import { SettingsPage } from "../../../page/Settings/settings";
-import { routerState, settingsState } from "../../../state";
+import { routerService } from "../../../services";
+import { settingsState } from "../../../state";
 import { settingsService } from "../service/SettingsService";
 import { SettingsHandlers } from "./SettingsHandlers";
 import { SettingsStateStore } from "./SettingsStateStore";
@@ -17,7 +18,7 @@ class SettingsPageController {
     settingsService.initialize();
     if (typeof settingsState.subscribe === "function") {
       this.unsubscribe = settingsState.subscribe(() => {
-        if (routerState.getRoute() === "settings") {
+        if (routerService.getCurrentRoute() === "settings") {
           this.render();
         }
       });
