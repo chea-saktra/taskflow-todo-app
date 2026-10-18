@@ -48,6 +48,8 @@ taskflow-todo-app/
 ├── package.json      # Project dependencies, scripts, and configuration
 └── README.md         # Project documentation
 
+```
+
 ---
 
 ## 🚀 Getting Started
