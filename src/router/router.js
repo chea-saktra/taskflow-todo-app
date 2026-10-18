@@ -1,44 +1,17 @@
-import { routerState } from "../state/router";
-import { ArchiveView } from "../views/archive/Archive";
-import { CompletedView } from "../views/completed/Completed";
-import { DashboardView } from "../views/dashboard/Dashboard";
-import { FavoritesView } from "../views/favorites/Favorites";
-import { SearchView } from "../views/search/search";
-import { TasksView } from "../views/tasks/Tasks";
-import { TodayView } from "../views/today/Today";
-import { UpcomingView } from "../views/upcoming/UpcomingView";
+import { routerService } from "../services";
+import { routes } from "./routes";
 
-const routes = {
-  dashboard: DashboardView,
-  tasks: TasksView,
-};
+class Router {
+  render(container) {
+    if (!container) return;
+    const currentRoute = routerService.getCurrentRoute();
+    const View = routes[currentRoute] || routes.dashboard;
+    const result = View(container);
 
-export const Router = () => {
-  const currentRoute = routerState.getRoute();
-  switch (currentRoute) {
-    case "tasks":
-      return TasksView();
-
-    case "favorites":
-      return FavoritesView();
-
-    case "completed":
-      return CompletedView();
-
-    case "today":
-      return TodayView();
-
-    case "upcoming":
-      return UpcomingView();
-
-    case "archive":
-      return ArchiveView();
-
-    case "search":
-      return SearchView();
-
-    case "dashboard":
-    default:
-      return DashboardView();
+    if (result instanceof Node) {
+      container.replaceChildren(result);
+    }
   }
-};
+}
+
+export const router = new Router();
