@@ -10,7 +10,7 @@ import { searchPageController } from "./features/search/controller/SearchPageCon
 import { settingsService } from "./features/settings/service/SettingsService";
 import { taskService } from "./features/tasks/services/TaskService";
 import { AppShell, Footer, Header, Sidebar } from "./layouts";
-import { router } from "./router/Router";
+import { router } from "./router/router";
 import { routerService, themeService } from "./services";
 import {
   loadingState,
