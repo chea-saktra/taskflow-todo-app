@@ -1,4 +1,4 @@
-import { SettingsPage } from "../../../page/Settings/settings";
+import { SettingsPage } from "../../../page/settings/Settings.js";
 import { routerService } from "../../../services";
 import { settingsState } from "../../../state";
 import { settingsService } from "../service/SettingsService";
