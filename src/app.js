@@ -10,7 +10,7 @@ import { searchPageController } from "./features/search/controller/SearchPageCon
 import { settingsService } from "./features/settings/service/SettingsService";
 import { taskService } from "./features/tasks/services/TaskService";
 import { AppShell, Footer, Header, Sidebar } from "./layouts";
-import { router } from "./router/router";
+import { routes } from "./router/routes";
 import { routerService, themeService } from "./services";
 import {
   loadingState,
@@ -116,7 +116,8 @@ export const initApp = () => {
     // Update Router Page Components
     const mainContent = select("main", app);
     if (mainContent) {
-      router.render(mainContent);
+      const View = routes[currentRoute] || routes.dashboard;
+      View(mainContent);
     }
     window.lucide?.createIcons();
   };
