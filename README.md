@@ -63,8 +63,8 @@ Ensure you have a modern web browser and a local development server (e.g., Live 
 1. **Clone the repository**
 
    ```bash
-   git clone https://github.com/your-username/your-repo-name.git
-   cd your-repo-name
+   git clone https://github.com/chea-saktra/taskflow-todo-app.git
+   cd taskflow-todo-app
    ```
 
 2. **Run Locally**
