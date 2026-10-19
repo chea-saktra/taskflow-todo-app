@@ -1,4 +1,4 @@
-import { archivePageController } from "../features/Archive/controller/ArchivePageController";
+import { archivePageController } from "../features/archive/controller/ArchivePageController";
 import { dashboardPageController } from "../features/dashboard/controller/DashboardPageController";
 import { searchPageController } from "../features/search/controller/SearchPageController";
 import { settingsPageController } from "../features/settings/controller/SettingsPageController";
