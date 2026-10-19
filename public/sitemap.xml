@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemap.org/schemas/sitemap/0.9">
+
+  <!-- Main Entry Point / Dashboard View -->
+  <url>
+    <loc>https://taskflow-todo-app-orcin.vercel.app/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Tasks View -->
+  <url>
+    <loc>https://taskflow-todo-app-orcin.vercel.app/tasks</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Archive View -->
+  <url>
+    <loc>https://taskflow-todo-app-orcin.vercel.app/archive</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <!-- Settings View -->
+  <url>
+    <loc>https://taskflow-todo-app-orcin.vercel.app/settings</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+
+</urlset>

@@ -1,0 +1,10 @@
+# Allow all search engines to crawl the website
+User-agent: *
+Allow: /
+
+# Disallow access to static code assets or private data folders if needed
+Disallow: /src/
+Disallow: /data/
+
+# Sitemap URL
+Sitemap: https://taskflow-todo-app-orcin.vercel.app/sitemap.xml
